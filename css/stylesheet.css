@@ -1,0 +1,60 @@
+body {
+    background-color: #009966;
+    font: 15px "Helvetica Neue", Arial, sans-serif;
+}
+
+a {
+    color: coral;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#main {
+    margin: 0 auto;
+    max-width: 1000px;
+    background-color: white;
+    min-height: 500px;
+}
+
+#headbar {
+    margin-top: 20px;
+    padding: 40px;
+    height: 133px;
+}
+
+#logo img {
+    margin-top: 50px;
+}
+
+#headbarbuttons {
+    float: right;
+    padding: 55px 0px 55px 0px;
+}
+
+.submitbutton {
+    padding: 15px;
+    width: 180px;
+    color: white;
+    background-color: #bda5b0;
+    font-weight: bold;
+    border: #927F88 2px solid;
+    border-radius: 5px;
+}
+
+#headbarbuttons a {
+    margin-right: 50px;
+}
+
+#sidemenu {
+    float: left;
+    width: 20%;
+}
+
+#sidemenu li {
+    line-height: 1.75;
+    font-size: 13px;
+}
+
+#content {
+    width: 80%;
+}
