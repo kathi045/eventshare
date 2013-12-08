@@ -45,41 +45,39 @@
             <div id="headbar">
                 <div id="headbarbuttons">
                     <div>
-                        <a href="?url=newevent">
-                            <input type="submit" value="Neues Event">
-                        </a>
-                        <a href="/changelog">
-                            <input type="submit" value="Changelog lesen">
-                        </a>
+                        <a class="button" href="?url=newevent">Neues Event</a>
+                        <a class="button" href="/changelog">Changelog lesen</a>
                     </div>
                 </div>
                 <div id="logo">
-                    <a href="/">
-                        <img src="img/eventshare_logo_2.png" width="350">
+                    <a href="http://www.unet.univie.ac.at/~a0968166/eventshare">
+                        <img src="img/eventshare_logo_3.png" width="350">
                     </a>
                 </div>
             </div>
-            <div id="sidemenu">
-                <ul>
-                    <li><a>Archiv</a></li>
+            <div id="page">
+                <div id="sidemenu">
                     <ul>
-                        <li><a>Dezember 2013</a></li>
-                        <li><a>November 2013</a></li>
-                        <li><a>Oktober 2013</a></li>
-                        <li><a>September 2013</a></li>
-                        <li><a>August 2013</a></li>
-                        <li><a>Juli 2013</a></li>
+                        <li><a>Archiv</a></li>
+                        <ul>
+                            <li><a>Dezember 2013</a></li>
+                            <li><a>November 2013</a></li>
+                            <li><a>Oktober 2013</a></li>
+                            <li><a>September 2013</a></li>
+                            <li><a>August 2013</a></li>
+                            <li><a>Juli 2013</a></li>
+                        </ul>
+                        <li><a>Noch ein Link</a></li>
+                        <li><a>Noch etwas</a></li>
                     </ul>
-                    <li><a>Noch ein Link</a></li>
-                    <li><a>Noch etwas</a></li>
-                </ul>
+                </div>
+                <div id="content">
+
+                    <?php echo $content;?>
+
+                </div>
+                <div class="clear"></div>
             </div>
-            <div id="content">
-                
-                <?php echo $content;?>
-                
-            </div>
-            <div class="clear"></div>
 
             <script src="js/vendor/zepto.min.js"></script>
             <script src="js/helper.js"></script>

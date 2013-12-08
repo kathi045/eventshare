@@ -16,7 +16,7 @@ class Neweventview {
           <h3>Veranstalter</h3>
           <input type="text" name="veranstalter">
           <br><br><br>
-          <input class="submitbutton" type="submit" value="Eintragen">
+          <input class="button" type="submit" value="Eintragen">
           <p style="font-size: 12px;">Feler mit * m&uuml;ssen ausgef&uuml;llt werden.</p>
           
         ';
