@@ -8,6 +8,8 @@ function __autoload($className)
 		require_once(ROOT . DS . 'classes' . DS . strtolower($className) . '.php');
         if (file_exists(ROOT . DS . 'pages' . DS . strtolower($className) . DS . strtolower($className) . '.php'))
 		require_once(ROOT . DS . 'pages' . DS . strtolower($className) . DS . strtolower($className) . '.php');
+        if (file_exists(ROOT . DS . 'pages' . DS .  str_replace('view', '', strtolower($className)) . DS . strtolower($className) . '.php'))
+                require_once(ROOT . DS . 'pages' . DS . str_replace('view', '', strtolower($className)) . DS . strtolower($className) . '.php');
 }
 
 function stripSlashesDeep($value)

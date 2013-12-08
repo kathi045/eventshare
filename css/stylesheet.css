@@ -1,6 +1,7 @@
 body {
     background-color: #009966;
     font: 15px "Helvetica Neue", Arial, sans-serif;
+    color: black;
 }
 
 a {
@@ -31,7 +32,7 @@ a {
     padding: 55px 0px 55px 0px;
 }
 
-.submitbutton {
+#headbarbuttons input {
     padding: 15px;
     width: 180px;
     color: white;
@@ -56,5 +57,24 @@ a {
 }
 
 #content {
-    width: 80%;
+    width: 60%;
+    float: right;
+    padding: 20px;
+    margin: 0px 50px 30px 0px;
+    border: 1px gray solid;
+}
+
+.clear {
+    clear: both;
+}
+
+.submitbutton {
+    padding: 5px;
+    width: 120px;
+    border: gray 2px solid;
+    border-radius: 4px;
+}
+
+.submitbutton:hover {
+    background-color: #bda5b0;
 }

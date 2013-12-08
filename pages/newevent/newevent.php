@@ -7,7 +7,10 @@
 class Newevent extends Page {
     
     function index() {
-        $this->set($title, "Neues Event");
+        $neweventview = new Neweventview;
+        
+        $this->set('title', "Neues Event");
+        $this->set('content', $neweventview->getEventForm());
     }
     
 }

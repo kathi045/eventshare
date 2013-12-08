@@ -45,11 +45,11 @@
             <div id="headbar">
                 <div id="headbarbuttons">
                     <div>
-                        <a href="/newevent">
-                            <input class="submitbutton" type="submit" value="Neues Event">
+                        <a href="?url=newevent">
+                            <input type="submit" value="Neues Event">
                         </a>
                         <a href="/changelog">
-                            <input class="submitbutton" type="submit" value="Changelog lesen">
+                            <input type="submit" value="Changelog lesen">
                         </a>
                     </div>
                 </div>
@@ -79,6 +79,7 @@
                 <?php echo $content;?>
                 
             </div>
+            <div class="clear"></div>
 
             <script src="js/vendor/zepto.min.js"></script>
             <script src="js/helper.js"></script>
