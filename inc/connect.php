@@ -1,25 +1,35 @@
 <?php
-$db = mysql_connect("a0968166.mysql.univie.ac.at", "a0968166", "eventshare.0");
-$db = mysql_select_db("a0968166");
-	
-	
-function query_element($query,$element)
-{
-	$scselect = mysql_query($query) or exit((mysql_error()));
-	while ($scrow=mysql_fetch_array($scselect))
-	{
-		return $scrow[$element];
-	}
-	return false;
-}
 
-function query_count($query)
-{
-	$fselect = mysql_query($query) or exit((mysql_error()));
-		return mysql_num_rows($fselect);
-}
+    $db = mysql_connect("a0968166.mysql.univie.ac.at", "a0968166", "eventshare.0");
+    $db = mysql_select_db("a0968166");
 
-function simplequery($query)
+
+    function query_element($query,$element)
+    {
+            $scselect = mysql_query($query) or exit((mysql_error()));
+            while ($scrow=mysql_fetch_array($scselect))
+            {
+                    return $scrow[$element];
+            }
+            return false;
+    }
+
+    function query_count($query)
+    {
+            $fselect = mysql_query($query) or exit((mysql_error()));
+                    return mysql_num_rows($fselect);
+    }
+
+    /*
+     * $data = simpleq("SELECT * FROM `event`");
+     * foreach($data as $item)
+     * {
+     *     $datum = $item['date'];
+     *     $owner = $item['creator'];
+     *     $id = $item['id'];
+     * }
+     */
+    function simplequery($query)
     {
         $scselect = mysql_query($query);
         if(!$scselect) return false;
@@ -34,6 +44,12 @@ function simplequery($query)
         return $out;
     }
     
+    /**
+     * like this: array('field'=>'text','timestamp'=>time());
+     * @param type $data = array(...)
+     * @param type $table
+     * @return boolean
+     */
     function insert($data,$table)
     { 
         
