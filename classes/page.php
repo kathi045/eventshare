@@ -8,7 +8,7 @@
  */
 class Page
 {
-	protected $_controller;
+    protected $_controller;
 	protected $_action;
 	protected $_template;
     public $variables;

@@ -14,7 +14,7 @@ class Neweventview {
           <input type="text" name="eventort">
           
           <h3>Datum *</h2>
-          <input type="number" name="tag" min="1" max="31">
+          <input type="text" name="tag" pattern="[1-31]" required value="1" maxlength="2" size="2">
           <select name="monat">
             <option>J&auml;nner</option>
             <option>Februar</option>
@@ -29,7 +29,7 @@ class Neweventview {
             <option>Novemebr</option>
             <option>Dezember</option>
           </select>
-          <input type="number" name="jahr" min="2013" max="2030">
+          <input type="text" name="jahr" pattern="[2013-2030]" required value="2013" title="Jahr" maxlength="4" size="4">
           
           <h3>Uhrzeit</h3>
           <input type="number" name="stunden" min="0" max="23">:

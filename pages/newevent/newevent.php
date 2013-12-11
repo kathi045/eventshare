@@ -13,6 +13,10 @@ class Newevent extends Page {
         $this->set('content', $neweventview->getEventForm());
     }
     
+    /**
+     * process new event request
+     * Neues Event in die Datenbank einspeichern oder Fehlermeldung
+     */
     function pr() {
         $this->set('title', "eventshare | Neues Event");
         
