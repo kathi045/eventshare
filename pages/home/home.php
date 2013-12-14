@@ -18,7 +18,7 @@ class Home extends Page {
         
         // Alle Events aus der Datenbank ausgeben und anzeigen
         $o = "<h1>Alle Events</h1><br>";
-        $ids = simplequery('SELECT `id` FROM `event`');
+        $ids = simplequery('SELECT `id` FROM `event` ORDER BY `datum`');
         foreach ($ids as $id) {
             $o .= $homeview->renderEvent($id['id']);
         }

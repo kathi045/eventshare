@@ -14,19 +14,24 @@ class Homeview {
         if(!$veranstalter) {
             $veranstalter = "-";
         }
+        $tweetembed = $event[0]["tweetembed"];
         
         $out = "<div class='event'>
                     <div class='eventtitle'>$eventname</div>
                     <div class='eventcontent'>
-                        <h3>Ort</h3>
+                        <h2>Ort</h2>
                         $eventort
-                        <h3>Datum</h3>
+                        <h2>Datum</h2>
                         $eventdatum
-                        <h3>Veranstalter</h3>
-                        $veranstalter
-                    </div>
-               </div><br>
-        ";
+                        <h2>Veranstalter</h2>
+                        $veranstalter";
+        if($tweetembed) {
+            $out .= "<br><img src='img/twitter.png' width='100' alt='Twitter'><br>
+                            $tweetembed
+                    ";
+        }
+        $out .= "</div>
+               </div><br>";
         
         return $out;
     }
