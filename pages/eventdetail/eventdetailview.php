@@ -1,6 +1,6 @@
 <?php
 
-class Homeview {
+class Eventdetailview {
     
     function renderEvent($id) {
         $event = simplequery("SELECT * FROM `event` WHERE `id` = '$id' LIMIT 1");
@@ -16,9 +16,8 @@ class Homeview {
         }
         $tweetembed = $event[0]["tweetembed"];
         
-        
         $out = "<div class='event'>
-                    <div class='eventtitle'><a href=\"?url=eventdetail/index&id=$id\">$eventname</a></div>
+                    <div class='eventtitle'>$eventname</div>
                     <div class='eventcontent'>
                         <h2>Ort</h2>
                         $eventort
