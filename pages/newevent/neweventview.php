@@ -31,7 +31,7 @@ class Neweventview {
             </select>
             <input type="text" name="jahr" pattern="[2013-2030]" required value="2013" title="Jahr" maxlength="4" size="4">
 
-            <h3>Uhrzeit</h3>
+            <h3>Uhrzeit *</h3>
             <input type="number" name="stunden" min="0" max="23">:
             <input type="number" name="minuten" min="0" max="59">
 
@@ -51,6 +51,19 @@ class Neweventview {
 
             <br><br><br>
             <input class="button" type="submit" value="Eintragen"><br><br>
+            <p style="font-size: 12px;">Felder mit * m&uuml;ssen ausgef&uuml;llt werden.</p>
+            
+            <h2>Du willst den Ort an einer Karte anzeigen?</h2>
+            <p>
+              Nichts leichter als das.<br>
+              Dazu musst du nur die Koordinaten (latitude & longitude) eingeben.<br>
+            </p>
+
+            <textarea rows="1" cols="12" name="lat"></textarea>
+            <textarea rows="1" cols="12" name="lng"></textarea>
+            <br><br><br>
+            <input class="button" type="submit" value="Eintragen"><br><br>
+            
             <p style="font-size: 12px;">Felder mit * m&uuml;ssen ausgef&uuml;llt werden.</p>
           </form>
         ';

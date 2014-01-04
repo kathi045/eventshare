@@ -15,6 +15,8 @@ class Homeview {
             $veranstalter = "-";
         }
         $tweetembed = $event[0]["tweetembed"];
+        $lat = $event[0]["lat"];
+        $lng = $event[0]["lng"];
         
         
         $out = "<div class='event'>
@@ -31,6 +33,14 @@ class Homeview {
                             $tweetembed
                     ";
         }
+        if($lat) {
+            if($lng) {
+                $out .= "<br>$lat $lng";
+?>
+             
+<?php
+            }
+        }
         $out .= "</div>
                </div><br>";
         
@@ -43,3 +53,4 @@ class Homeview {
         }
     }
 }
+?>

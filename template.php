@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div id="logo">
-                    <a href="http://www.unet.univie.ac.at/~a0968166/eventshare">
+                    <a href="?url=home">
                         <img src="img/eventshare_logo_3.png" width="350">
                     </a>
                 </div>
