@@ -19,7 +19,7 @@ class Eventdetail extends Page {
         $id = $_GET['id'];
         // Ein Event aus der Datenbank ausgeben und anzeigen
         $o = "<h1>Event</h1><br>";
-        $o .= $eventdetailview->renderEvent($id);
+        $o .= $eventdetailview->renderEventdetails($id);
         
         
         return $o;

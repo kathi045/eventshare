@@ -64,10 +64,10 @@ class Newevent extends Page {
                 "lng" => $lng, "flickrembed" => $flickrembed);
             $id = insert($data, "event");
             if($id) {
-                $o = "Event erfolgreich angelegt!";
+                $o = "<h3>Event erfolgreich angelegt!</h3><br>";
                 
-                $homeview = new Homeview();
-                $o .= $homeview->renderEvent($id);
+                $eventdetailview = new Eventdetailview();
+                $o .= $eventdetailview->renderEventdetails($id);
             } else {
                 $o = $neweventview->error(2);
             }

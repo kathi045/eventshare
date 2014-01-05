@@ -67,7 +67,15 @@
         
         return mysql_insert_id();
     }
-
+    
+    /**
+     * 
+     * @param type $array
+     * @param type $table
+     * @param type $id
+     * @param type $feld
+     * @return type
+     */
     function update($array,$table,$id,$feld='ID')
     {
         if(!$table) $table = $this->_table;
@@ -78,5 +86,6 @@
         
         $set = substr($set, 0,-2);
         $q = "UPDATE `".$table."` SET ".$set." WHERE `".$feld."` = '".$id."'";
+        
         return mysql_query($q);
     }

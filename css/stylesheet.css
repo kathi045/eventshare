@@ -1,5 +1,5 @@
 body {
-    background-color: #E6E6E6;
+    background-color: #53868B;
     font-family: 'Open Sans', Arial, sans-serif;
     font-size: 15px;
     color: #444;
@@ -48,6 +48,7 @@ h3 {
     background-color: white;
     min-height: 500px;
     box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
+    border-radius: 15px;
 }
 
 #headbar {
