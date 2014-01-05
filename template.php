@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/stylesheet.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDyHhVHte59a5sA5_SBRfI3vvE_crUR12A&sensor=false"></script>
         <?php echo $js; ?>
     </head>
     <body>

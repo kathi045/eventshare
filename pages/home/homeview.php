@@ -13,12 +13,7 @@ class Homeview {
         $veranstalter = $event[0]["veranstalter"];
         if(!$veranstalter) {
             $veranstalter = "-";
-        }
-        $tweetembed = $event[0]["tweetembed"];
-        $lat = $event[0]["lat"];
-        $lng = $event[0]["lng"];
-        $flickrembed = $event[0]["flickrembed"];
-        
+        }        
         
         $out = "<div class='event'>
                     <div class='eventtitle'><a href=\"?url=eventdetail/index&id=$id\">$eventname</a></div>
@@ -29,23 +24,6 @@ class Homeview {
                         $eventdatum
                         <h2>Veranstalter</h2>
                         $veranstalter";
-        if($tweetembed) {
-            $out .= "<br><img src='img/twitter.png' width='100' alt='Twitter'><br>
-                            $tweetembed
-                    ";
-        }
-        if($lat) {
-            if($lng) {
-                $out .= "<br>$lat $lng";
-?>
-             
-<?php
-            }
-        }
-        if($flickrembed) {
-            $out .= "<br>$flickrembed";
-        }
-        
         
         $out .= "</div>
                </div><br>";
@@ -59,4 +37,3 @@ class Homeview {
         }
     }
 }
-?>

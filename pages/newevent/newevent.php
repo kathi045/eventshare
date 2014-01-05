@@ -43,22 +43,31 @@ class Newevent extends Page {
         $minuten = $_POST["minuten"];
         $eventdatum = strtotime("$tag.$monat.$jahr $stunden:$minuten");
         $veranstalter = $_POST["veranstalter"];
+        $addinfos = $_POST["addinfos"];
         $tweetembed = $_POST["tweetembed"];
         $lat = $_POST["lat"];
         $lng = $_POST["lng"];
         $flickrembed = $_POST["flickrembed"];
         
-        
-        if(!$eventname || !$eventort || !$eventdatum) {
+        if($tag <= 0 || $tag > 31 || $jahr < date("Y") || $jahr > 2099) {
+            $neweventview = new Neweventview;
+            $o = $neweventview->error(3) . $neweventview->getEventForm();
+        } elseif($stunden < 0 || $stunden > 23 || $minuten < 0 || $minuten > 59) {
+            $neweventview = new Neweventview;
+            $o = $neweventview->error(4) . $neweventview->getEventForm();
+        } elseif(!$eventname || !$eventort || !$eventdatum) {
             $neweventview = new Neweventview;
             $o = $neweventview->error(1) . $neweventview->getEventForm();
         } else {
             $data = array("name" => $eventname, "ort" => $eventort, "datum" => $eventdatum, 
-                "veranstalter" => $veranstalter, "tweetembed" => $tweetembed, "lat" => $lat,
+                "veranstalter" => $veranstalter, "addinfos" => $addinfos, "tweetembed" => $tweetembed, "lat" => $lat,
                 "lng" => $lng, "flickrembed" => $flickrembed);
             $id = insert($data, "event");
             if($id) {
                 $o = "Event erfolgreich angelegt!";
+                
+                $homeview = new Homeview();
+                $o .= $homeview->renderEvent($id);
             } else {
                 $o = $neweventview->error(2);
             }
