@@ -46,6 +46,7 @@ class Newevent extends Page {
         $tweetembed = $_POST["tweetembed"];
         $lat = $_POST["lat"];
         $lng = $_POST["lng"];
+        $flickrembed = $_POST["flickrembed"];
         
         
         if(!$eventname || !$eventort || !$eventdatum) {
@@ -53,7 +54,8 @@ class Newevent extends Page {
             $o = $neweventview->error(1) . $neweventview->getEventForm();
         } else {
             $data = array("name" => $eventname, "ort" => $eventort, "datum" => $eventdatum, 
-                "veranstalter" => $veranstalter, "tweetembed" => $tweetembed, "lat" => $lat, "lng" => $lng);
+                "veranstalter" => $veranstalter, "tweetembed" => $tweetembed, "lat" => $lat,
+                "lng" => $lng, "flickrembed" => $flickrembed);
             $id = insert($data, "event");
             if($id) {
                 $o = "Event erfolgreich angelegt!";

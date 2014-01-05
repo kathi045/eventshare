@@ -17,6 +17,7 @@ class Homeview {
         $tweetembed = $event[0]["tweetembed"];
         $lat = $event[0]["lat"];
         $lng = $event[0]["lng"];
+        $flickrembed = $event[0]["flickrembed"];
         
         
         $out = "<div class='event'>
@@ -41,6 +42,11 @@ class Homeview {
 <?php
             }
         }
+        if($flickrembed) {
+            $out .= "<br>$flickrembed";
+        }
+        
+        
         $out .= "</div>
                </div><br>";
         

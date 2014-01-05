@@ -51,7 +51,6 @@ class Neweventview {
 
             <br><br><br>
             <input class="button" type="submit" value="Eintragen"><br><br>
-            <p style="font-size: 12px;">Felder mit * m&uuml;ssen ausgef&uuml;llt werden.</p>
             
             <h2>Du willst den Ort an einer Karte anzeigen?</h2>
             <p>
@@ -61,6 +60,16 @@ class Neweventview {
 
             <textarea rows="1" cols="12" name="lat"></textarea>
             <textarea rows="1" cols="12" name="lng"></textarea>
+            <br><br><br>
+            <input class="button" type="submit" value="Eintragen"><br><br>
+            
+            <h2>Du willst ein Foto von Flickr hinzuf&uuml;gen?</h2>
+            <p>
+              Nichts leichter als das.<br>
+              Dazu musst du nur ...<br>
+            </p>
+
+            <textarea rows="5" cols="70" name="flickrembed"></textarea>
             <br><br><br>
             <input class="button" type="submit" value="Eintragen"><br><br>
             

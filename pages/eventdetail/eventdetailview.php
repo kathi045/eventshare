@@ -30,6 +30,18 @@ class Eventdetailview {
                             $tweetembed
                     ";
         }
+        if($lat) {
+            if($lng) {
+                $out .= "<br>$lat $lng";
+?>
+             
+<?php
+            }
+        }
+        if($flickrembed) {
+            $out .= "<br>$flickrembed";
+        }
+
         $out .= "</div>
                </div><br>";
         
