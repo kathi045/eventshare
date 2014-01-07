@@ -1,5 +1,6 @@
-<?php include "twitteroauth.php"; ?>
-<?php
+<?php 
+
+include "../../lib/twitter/twitteroauth.php";
 
 class Eventdetailview {
     
@@ -51,10 +52,11 @@ class Eventdetailview {
             $accesstoken = "2279704992-8Mf75D8VWn8VlRIc3oZbMnlyvR4c045Sl22r3am";
             $accesstokensecret = "olZqD6MOdr86yv0qE56J5Q15QEQyB1mwnhX2cXtS8qzaZ";
             
-            $twitter = new TwitterOAuth($consumer, $consumersecret, $accesstoken, $accesstokensecret);
-            $tweets = $twitter->get('https://api.twitter.com/1.1/search/tweets.json?q=%23'.$hashtag.'&result_type=recent&count=20');    //%23 wird als # aufgelöst (Hashtag)    //weitere Parameter: https://dev.twitter.com/docs/api/1.1/get/search/tweets
-
             $out .= "<br>Tweets über #$hashtag: <br><br>";
+            
+            $twitter = new TwitterOAuth($consumer, $consumersecret, $accesstoken, $accesstokensecret);
+            $tweets = $twitter->get('https://api.twitter.com/1.1/search/tweets.json?q=%23'.$hashtag.'&result_type=mixed&count=20');    //%23 wird als # aufgelöst (Hashtag)    //weitere Parameter: https://dev.twitter.com/docs/api/1.1/get/search/tweets
+
             foreach($tweets as $tweet) {
                 foreach($tweet as $t) {
                     $out .= '<img src="'.$t->user->profile_image_url.'" />   '.$t->text.'<br>';    //text gibt den Tweet aus
