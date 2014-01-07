@@ -12,6 +12,7 @@
         <?php echo $meta; ?>
         
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
         
         <link rel="stylesheet" href="css/normalize.css">
@@ -27,12 +28,12 @@
                 <div id="headbarbuttons">
                     <div>
                         <a class="button" href="?url=newevent">Neues Event</a>
-                        <a class="button" href="/changelog">Changelog lesen</a>
+                        <a class="button" href="?url=changelog">Changelog lesen</a>
                     </div>
                 </div>
                 <div id="logo">
                     <a href="?url=home">
-                        <img src="img/eventshare_logo_3.png" width="350">
+                        <img src="img/logo_1.png" width="450">
                     </a>
                 </div>
             </div>
@@ -59,17 +60,6 @@
                 </div>
                 <div class="clear"></div>
             </div>
-
-            <script src="js/vendor/zepto.min.js"></script>
-            <script src="js/helper.js"></script>
-
-            <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-            <script>
-                var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
-                (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-                g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
-                s.parentNode.insertBefore(g,s)}(document,"script"));
-            </script>
         </div>
     </body>
 </html>

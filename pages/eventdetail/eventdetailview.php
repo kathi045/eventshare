@@ -1,7 +1,5 @@
 <?php 
 
-include "../../lib/twitter/twitteroauth.php";
-
 class Eventdetailview {
     
     function renderEventdetails($id) {
@@ -13,9 +11,6 @@ class Eventdetailview {
         $eventort = $event[0]['ort'];
         $eventdatum = date("d.m.Y, H:i", $event[0]['datum']);
         $veranstalter = $event[0]["veranstalter"];
-        if(!$veranstalter) {
-            $veranstalter = "-";
-        }
         $addinfos = $event[0]["addinfos"];
         $tweetembed = $event[0]["tweetembed"];
         $hashtag = $event[0]["hashtag"];
@@ -29,19 +24,19 @@ class Eventdetailview {
                         <h2>Ort</h2>
                         $eventort
                         <h2>Datum</h2>
-                        $eventdatum
-                        <h2>Veranstalter</h2>
-                        $veranstalter
-                ";
+                        $eventdatum";
+        
+        if($veranstalter) {
+            $out .= "<h2>Veranstalter</h2>
+                        $veranstalter";
+        }
         
         if($addinfos) {
-            $out .= "<h2>Zus&auml;tzliche Infos</h2>" . nl2br($addinfos) . "<br><br>";   // new line to break (Zeilenumbrueche)
+            $out .= "<h2>Zus&auml;tzliche Infos</h2>" . nl2br($addinfos) . "<br><br>";   // nl2b: new line to break (Zeilenumbrueche)
         }
         
         if($tweetembed) {
-            $out .= "<br><img src='img/twitter.png' width='100' alt='Twitter'><br>
-                            $tweetembed
-                    ";
+            $out .= "<br><img src='img/twitter.png' width='100' alt='Twitter'><br>$tweetembed";
         }
         
         //Twitter Hashtag
@@ -52,14 +47,24 @@ class Eventdetailview {
             $accesstoken = "2279704992-8Mf75D8VWn8VlRIc3oZbMnlyvR4c045Sl22r3am";
             $accesstokensecret = "olZqD6MOdr86yv0qE56J5Q15QEQyB1mwnhX2cXtS8qzaZ";
             
-            $out .= "<br>Tweets über #$hashtag: <br><br>";
+            $out .= '<nr><br><br><img src="img/twitter_logo.png" alt="Twitter Bird" height="30px"><span class="hashtag">#' . $hashtag . '</span><br>';
             
             $twitter = new TwitterOAuth($consumer, $consumersecret, $accesstoken, $accesstokensecret);
-            $tweets = $twitter->get('https://api.twitter.com/1.1/search/tweets.json?q=%23'.$hashtag.'&result_type=mixed&count=20');    //%23 wird als # aufgelöst (Hashtag)    //weitere Parameter: https://dev.twitter.com/docs/api/1.1/get/search/tweets
-
+            $tweets = $twitter->get('https://api.twitter.com/1.1/search/tweets.json?q=%23'.$hashtag.'&result_type=mixed');    //%23 wird als # aufgelöst (Hashtag)    //weitere Parameter: https://dev.twitter.com/docs/api/1.1/get/search/tweets
+            
+            $count = 0;
             foreach($tweets as $tweet) {
                 foreach($tweet as $t) {
-                    $out .= '<img src="'.$t->user->profile_image_url.'" />   '.$t->text.'<br>';    //text gibt den Tweet aus
+                    $count++;
+                    if($count == 10) {
+                        break;
+                    }
+                    $out .= '<div class="tweets"><img src="'.$t->user->profile_image_url.'" />';
+                    $out .= '<span class="twittername">    ' . $t->user->name . '</span><br>';
+                    $out .= '<div class="twittertext">' . $t->text.'</div></div><br>';                                        //text gibt den Tweet aus
+                }
+                if($count == 10) {
+                    break;
                 }
             }
         }

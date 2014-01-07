@@ -1,19 +1,27 @@
 body {
-    background-color: #53868B;
+    background-color: #4A4857;
     font-family: 'Open Sans', Arial, sans-serif;
     font-size: 15px;
     color: #444;
 }
 
 a {
-    color: #21759b;
+    color: #4A4857;
     font-weight: bold;
     text-decoration: none;
     cursor: pointer;
 }
 
 a:hover {
-    color: #0f3647;
+    color: #6DA67A;
+}
+
+a:visited {
+    color: #4A4857;
+}
+
+a:visited:hover {
+    color: #6DA67A;
 }
 
 p {
@@ -37,6 +45,12 @@ h2 {
 h3 {
     font-size: 16px;
     line-height: 1.8;
+}
+
+textarea {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 6px;
 }
 
 #main {
@@ -79,6 +93,19 @@ h3 {
     box-shadow: 0 1px 2px rgba(64, 64, 64, 0.1);
 }
 
+.button:hover {
+    color: #5e5e5e;
+    background-color: #ebebeb;
+    background-repeat: repeat-x;
+    background-image: -webkit-linear-gradient(bottom, #f9f9f9, #ebebeb);
+    background-image: -o-linear-gradient(bottom, #f9f9f9, #ebebeb);
+    background-image: linear-gradient(bottom, #f9f9f9, #ebebeb);
+}
+
+.button:visited:hover {
+    color: #5e5e5e;
+}
+
 input {
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -103,7 +130,7 @@ input {
 
 #sidemenu li {
     line-height: 2;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 #content {
@@ -115,22 +142,83 @@ input {
 .event {
     padding-top: 20px;
     border-top: 1px solid #ddd;
+    position: relative;
 }
 
 .eventtitle {
     font-size: 28px;
     font-weight: bold;
-    color: #21759b;
     margin-bottom: 25px;
+}
+
+.eventtitle a {
+    color: #6DA67A;
+}
+
+.eventtitle a:hover {
+    color: #CCAC95;
+}
+
+.eventtitle a:visited {
+    color: #6DA67A;
+}
+
+.eventtitle a:visited:hover {
+    color: #CCAC95;
 }
 
 .eventcontent {
     padding-left: 20px;
 }
 
+.event_rechts {
+    width: 35%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 10px;
+}
+
+.event_rechts a {
+    color: #5e5e5e;
+}
+
+.event_links {
+    width: 60%;
+}
+
 .neweventform .button {
     padding: 16px 30px;
     font-weight: bold;
+}
+
+.tweets {
+    width: 580px;
+    border: 1px solid #d2d2d2;
+    border-radius: 4px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 14pt;
+    padding-bottom: 30px;
+}
+
+.tweets img {
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+.tweets .twittername {
+    font-weight: bold;
+}
+
+.tweets .twittertext {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.hashtag {
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15pt;
 }
 
 .clear {

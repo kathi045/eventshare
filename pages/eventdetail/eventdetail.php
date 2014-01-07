@@ -1,9 +1,5 @@
 <?php
 
-/*
- * Home site
- */
-
 class Eventdetail extends Page {
     
     function index() {

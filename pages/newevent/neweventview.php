@@ -16,18 +16,18 @@ class Neweventview {
             <h3>Datum *</h2>
             <input type="text" name="tag" value="' . $_POST["tag"] . '" maxlength="2" size="2">
             <select name="monat">
-              <option>J&auml;nner</option>
-              <option>Februar</option>
-              <option>M&auml;rz</option>
-              <option>April</option>
-              <option>Mai</option>
-              <option>Juni</option>
-              <option>Juli</option>
-              <option>August</option>
-              <option>September</option>
-              <option>Oktober</option>
-              <option>Novemebr</option>
-              <option>Dezember</option>
+              <option '.(($_POST["monat"]==1)?'selected="selected"':'').'>J&auml;nner</option>
+              <option '.(($_POST["monat"]==2)?'selected="selected"':'').'>Februar</option>
+              <option '.(($_POST["monat"]==3)?'selected="selected"':'').'>M&auml;rz</option>
+              <option '.(($_POST["monat"]==4)?'selected="selected"':'').'>April</option>
+              <option '.(($_POST["monat"]==5)?'selected="selected"':'').'>Mai</option>
+              <option '.(($_POST["monat"]==6)?'selected="selected"':'').'>Juni</option>
+              <option '.(($_POST["monat"]==7)?'selected="selected"':'').'>Juli</option>
+              <option '.(($_POST["monat"]==8)?'selected="selected"':'').'>August</option>
+              <option '.(($_POST["monat"]==9)?'selected="selected"':'').'>September</option>
+              <option '.(($_POST["monat"]==10)?'selected="selected"':'').'>Oktober</option>
+              <option '.(($_POST["monat"]==11)?'selected="selected"':'').'>November</option>
+              <option '.(($_POST["monat"]==12)?'selected="selected"':'').'>Dezember</option>
             </select>
             <input type="text" name="jahr" value="' . $_POST["jahr"] . '" title="Jahr" maxlength="4" size="4">
 
