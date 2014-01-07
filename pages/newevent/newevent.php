@@ -44,6 +44,7 @@ class Newevent extends Page {
         $eventdatum = strtotime("$tag.$monat.$jahr $stunden:$minuten");
         $veranstalter = $_POST["veranstalter"];
         $addinfos = $_POST["addinfos"];
+        $hashtag = $_POST["hashtag"];
         $tweetembed = $_POST["tweetembed"];
         $lat = $_POST["lat"];
         $lng = $_POST["lng"];
@@ -60,7 +61,7 @@ class Newevent extends Page {
             $o = $neweventview->error(1) . $neweventview->getEventForm();
         } else {
             $data = array("name" => $eventname, "ort" => $eventort, "datum" => $eventdatum, 
-                "veranstalter" => $veranstalter, "addinfos" => $addinfos, "tweetembed" => $tweetembed, "lat" => $lat,
+                "veranstalter" => $veranstalter, "addinfos" => $addinfos, "tweetembed" => $tweetembed, "hashtag" => $hashtag, "lat" => $lat,
                 "lng" => $lng, "flickrembed" => $flickrembed);
             $id = insert($data, "event");
             if($id) {

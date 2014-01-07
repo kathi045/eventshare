@@ -46,19 +46,12 @@ class Neweventview {
             <p style="font-size: 12px;">Felder mit * m&uuml;ssen ausgef&uuml;llt werden.</p>
             <br>
 
-            <h2>Du willst einen Tweet mit dem Event verkn&uuml;pfen?</h2>
-            <p>
-              Nichts leichter als das.<br>
-              Dazu musst du unter dem Tweet einfach auf "Mehr" klicken und "Tweet einbetten" ausw&auml;hlen.<br>
-              <img src="img/tweet_embed.png" width="650"><br>
-              Jetzt den Code aus dem Textfeld kopieren und in das Feld einf&uuml;gen:
-            </p>
-
-            <textarea rows="5" cols="70" name="tweetembed" value="' . $_POST["tweetembed"] . '"></textarea>
+            <h2>Mit welchem Hashtag wird auf Twitter über dein Event geredet?</h2>
+            Hashtag: #<input type="text" name="hashtag" maxlength="20" value="' . $_POST["hashtag"] . '">
 
             <br><br><br>
             
-            <h2>Oder den Ort in einer Google Map anzeigen lassen?</h2>
+            <h2>Willst du den Ort in einer Google Map anzeigen lassen?</h2>
             <p>
               Dazu musst du im Google Maps auf den jeweiligen Ort rechtsklicken, dann "Was ist hier?" ausw&auml;hlen und die Koordinaten, die oben im Suchfeld erscheinen, hier eingeben.
               <img src="img/googlemaps_wasisthier.png" width="400"><br>
@@ -77,7 +70,10 @@ class Neweventview {
             </p>
 
             <textarea rows="5" cols="70" name="flickrembed" value="' . $_POST["flickrembed"] . '"></textarea>
-            <br><br><br>
+            
+            <br>
+            <br>
+            <br>
             <input class="button" type="submit" value="Eintragen"><br><br>
             
             

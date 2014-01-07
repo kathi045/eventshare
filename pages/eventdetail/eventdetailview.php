@@ -1,3 +1,4 @@
+<?php include "twitteroauth.php"; ?>
 <?php
 
 class Eventdetailview {
@@ -16,6 +17,7 @@ class Eventdetailview {
         }
         $addinfos = $event[0]["addinfos"];
         $tweetembed = $event[0]["tweetembed"];
+        $hashtag = $event[0]["hashtag"];
         $lat = $event[0]["lat"];
         $lng = $event[0]["lng"];
         $flickrembed = $event[0]["flickrembed"];
@@ -39,6 +41,25 @@ class Eventdetailview {
             $out .= "<br><img src='img/twitter.png' width='100' alt='Twitter'><br>
                             $tweetembed
                     ";
+        }
+        
+        //Twitter Hashtag
+        if($hashtag) {
+            
+            $consumer = "1stozpaVb8gfSdd15XI6xQ";
+            $consumersecret = "9scMIXAMJdZsPrTCeFyDPB35QU4aXcnkAoQ1u38Y";
+            $accesstoken = "2279704992-8Mf75D8VWn8VlRIc3oZbMnlyvR4c045Sl22r3am";
+            $accesstokensecret = "olZqD6MOdr86yv0qE56J5Q15QEQyB1mwnhX2cXtS8qzaZ";
+            
+            $twitter = new TwitterOAuth($consumer, $consumersecret, $accesstoken, $accesstokensecret);
+            $tweets = $twitter->get('https://api.twitter.com/1.1/search/tweets.json?q=%23'.$hashtag.'&result_type=recent&count=20');    //%23 wird als # aufgelöst (Hashtag)    //weitere Parameter: https://dev.twitter.com/docs/api/1.1/get/search/tweets
+
+            $out .= "<br>Tweets über #$hashtag: <br><br>";
+            foreach($tweets as $tweet) {
+                foreach($tweet as $t) {
+                    $out .= '<img src="'.$t->user->profile_image_url.'" />   '.$t->text.'<br>';    //text gibt den Tweet aus
+                }
+            }
         }
         
         // Google Maps x and y coords
