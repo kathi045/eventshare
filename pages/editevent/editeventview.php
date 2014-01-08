@@ -28,7 +28,7 @@ class Editeventview {
         $flickrembed = $event[0]["flickrembed"];
         
         return '
-          <h1>Event bearbeiten</h1>
+          <img class="editeventicon" src="img/edit.png" alt="edit event icon"><h1>Event bearbeiten</h1>
           <form class="neweventform" action="?url=editevent/pr&id=' . $id . '" method="post">
           
             <h3>Name *</h2>

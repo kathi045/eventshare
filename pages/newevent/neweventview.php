@@ -4,7 +4,7 @@ class Neweventview {
     
     function getEventForm() {
         return '
-          <h1>Neues Event erstellen</h1>
+          <img class="neweventicon" src="img/plus.png" alt="edit image"><h1>Neues Event erstellen</h1>
           <form class="neweventform" action="?url=newevent/pr" method="post">
           
             <h3>Name *</h2>
@@ -66,7 +66,7 @@ class Neweventview {
             <h2>Oder vielleicht ein Foto von Flickr hinzuf&uuml;gen?</h2>
             <p>
               Daf&uuml;r auf das Symbol mit dem Pfeil klicken und den HTML-Code im Textfeld unten einf&uuml;gen.
-              <img src="img/flickr_embed.jpg" width="650"><br>
+              <img src="img/flickr_embed.jpg" width="550"><br>
             </p>
 
             <textarea rows="5" cols="70" name="flickrembed" value="' . $_POST["flickrembed"] . '"></textarea>

@@ -33,7 +33,7 @@
                 </div>
                 <div id="logo">
                     <a href="?url=home">
-                        <img src="img/logo_1.png" width="450">
+                        <img src="img/logo_1.png">
                     </a>
                 </div>
             </div>
