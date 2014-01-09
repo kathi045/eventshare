@@ -25,6 +25,7 @@ class Editeventview {
         $hashtag = $event[0]["hashtag"];
         $lat = $event[0]["lat"];
         $lng = $event[0]["lng"];
+        $flickrtag = $event[0]["flickrtag"];
         $flickrembed = $event[0]["flickrembed"];
         
         return '
@@ -82,6 +83,10 @@ class Editeventview {
             <br><br><br>
             
             <h2>Flickr</h2>
+ 
+            Flickr-Tag: <input type="text" name="flickrtag" maxlength="20" value="' . $flickrtag . '">
+
+
             <textarea rows="5" cols="70" name="flickrembed" value="' . $flickrembed . '"></textarea>
             
             <br>

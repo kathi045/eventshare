@@ -48,6 +48,7 @@ class Newevent extends Page {
         $tweetembed = $_POST["tweetembed"];
         $lat = $_POST["lat"];
         $lng = $_POST["lng"];
+        $flickrtag = $_POST["flickrtag"];
         $flickrembed = $_POST["flickrembed"];
         
         if($tag <= 0 || $tag > 31 || $jahr < date("Y") || $jahr > 2099) {
@@ -63,7 +64,7 @@ class Newevent extends Page {
         } else {
             $data = array("name" => $eventname, "ort" => $eventort, "datum" => $eventdatum, 
                 "veranstalter" => $veranstalter, "addinfos" => $addinfos, "tweetembed" => $tweetembed, "hashtag" => $hashtag, "lat" => $lat,
-                "lng" => $lng, "flickrembed" => $flickrembed);
+                "lng" => $lng, "flickrtag" => $flickrtag, "flickrembed" => $flickrembed);
             $id = insert($data, "event");
             if($id) {
                 $o = "<h3>Event erfolgreich angelegt!</h3><br>";

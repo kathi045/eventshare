@@ -1,5 +1,8 @@
 <?php 
 
+include "classes/phpFlickr.php";
+include "classes/twitteroauth.php";
+
 class Eventdetailview {
     
     function renderEventdetails($id) {
@@ -16,6 +19,7 @@ class Eventdetailview {
         $hashtag = $event[0]["hashtag"];
         $lat = $event[0]["lat"];
         $lng = $event[0]["lng"];
+        $flickrtag = $event[0]["flickrtag"];
         $flickrembed = $event[0]["flickrembed"];
         
         $out = "<div class='event'>
@@ -94,6 +98,24 @@ class Eventdetailview {
                         <div id="googleMap' . $id . '" style="width:500px; height:380px;"></div>
                         '
                         ;
+        }
+        
+        //flickr photo tag  // API reference: http://www.flickr.com/services/api/
+        if($flickrtag) {
+            
+            $flickrkey = "27d0025e89ef414fcc5671a3dcad6ed6";
+            
+            $flickr = new phpFlickr($flickrkey);
+            
+            $flickrphotos = $flickr->photos_search(array("tags"=>"$flickrtag", "tag_mode"=>"any", "per_page"=>"5"));
+            
+            $out .= "Flickr-Photos mit Tag $flickrtag:<br>";
+            
+            foreach ($flickrphotos as $photo) {
+                $out .= '<img border="0" alt="' . $photo[title] . '" src="
+                        ' . $flickr->buildPhotoURL($photo, "square") . '" /><br /><p>' . $photo[title] . '</p></div>';
+            }
+            
         }
         
         // flickr photo album
