@@ -1,10 +1,9 @@
 <?php 
 
-include "classes/phpFlickr.php";
 include "classes/twitteroauth.php";
 
 class Eventdetailview {
-    
+
     function renderEventdetails($id) {
         $event = simplequery("SELECT * FROM `event` WHERE `id` = '$id'");
         if(!$event){
@@ -102,18 +101,21 @@ class Eventdetailview {
         
         //flickr photo tag  // API reference: http://www.flickr.com/services/api/
         if($flickrtag) {
+             
+            $out .= "Flickr-Photos mit Tag $flickrtag:<br>";
             
             $flickrkey = "27d0025e89ef414fcc5671a3dcad6ed6";
             
-            $flickr = new phpFlickr($flickrkey);
+            $flickrurl = "http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" . $flickrkey . "&tags=" . $flickrtag . "&per_page=5&format=rest";        
+            $photolist = file_get_contents($flickrurl);
+        
+            print_r($flickrurl);    //TEST: URL PASST
+            print_r($photolist);    //TEST: WIRD NICHT AUSGEGEBEN!!!
             
-            $flickrphotos = $flickr->photos_search(array("tags"=>"$flickrtag", "tag_mode"=>"any", "per_page"=>"5"));
-            
-            $out .= "Flickr-Photos mit Tag $flickrtag:<br>";
-            
-            foreach ($flickrphotos as $photo) {
-                $out .= '<img border="0" alt="' . $photo[title] . '" src="
-                        ' . $flickr->buildPhotoURL($photo, "square") . '" /><br /><p>' . $photo[title] . '</p></div>';
+            foreach ($photolist->rsp->photos->photo as $photo) {
+                    $flickrurl = "http://farm" . $photo[farm] . ".staticflickr.com" . $photo[server] . "/" . $photo[id] . "_" . $photo[secret] . "_q.jpg";  // q am Ende steht für die Größe. Liste der Größenangaben: http://www.flickr.com/services/api/misc.urls.html
+                    $out .= '<div><img border="0" alt="'. $photo[title] . '" src="
+                        ' . $flickrurl . '" /><br /><p>' . $photo[title] . '</p></div>';
             }
             
         }
@@ -134,4 +136,5 @@ class Eventdetailview {
             case 1: return '<span class="error"does not exist</span>';
         }
     }
+    
 }
