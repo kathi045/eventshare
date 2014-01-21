@@ -88,7 +88,6 @@ class Neweventview {
     }
     
     function error($par) {
-        echo $par;
         switch($par) {
             case 1: return '<span class="error">Es m&uuml;ssen alle Felder mit * ausgef&uuml;llt werden!</span>';
             case 2: return '<span class="error">Leider ist etwas schief gelaufen.</span>';

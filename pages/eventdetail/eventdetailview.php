@@ -14,7 +14,6 @@ class Eventdetailview {
         $eventdatum = date("d.m.Y, H:i", $event[0]['datum']);
         $veranstalter = $event[0]["veranstalter"];
         $addinfos = $event[0]["addinfos"];
-        $tweetembed = $event[0]["tweetembed"];
         $hashtag = $event[0]["hashtag"];
         $lat = $event[0]["lat"];
         $lng = $event[0]["lng"];
@@ -22,6 +21,10 @@ class Eventdetailview {
         $flickrembed = $event[0]["flickrembed"];
         
         $out = "<div class='event'>
+                <div class='event_rechts'>
+                    <a class='button' href='?url=editevent&id=".$id."'><img class='editicon_mini' src='img/edit.png'>Event bearbeiten</a>
+                </div>
+                <div class='event_links'>
                     <div class='eventtitle'>$eventname</div>
                     <div class='eventcontent'>
                         <h2>Ort</h2>
@@ -38,11 +41,7 @@ class Eventdetailview {
             $out .= "<h2>Zus&auml;tzliche Infos</h2>" . nl2br($addinfos) . "<br><br>";   // nl2b: new line to break (Zeilenumbrueche)
         }
         
-        if($tweetembed) {
-            $out .= "<br><img src='img/twitter.png' width='100' alt='Twitter'><br>$tweetembed";
-        }
-        
-        //Twitter Hashtag
+        //Twitter Hashtag --- reference: https://dev.twitter.com/docs/api/1.1/get/search/tweets, tutorial: http://www.youtube.com/watch?v=iPnGB7a7dO0
         if($hashtag) {
             
             $consumer = "1stozpaVb8gfSdd15XI6xQ";
@@ -72,7 +71,7 @@ class Eventdetailview {
             }
         }
         
-        // Google Maps x and y coords
+        // Google Maps x and y coords --- reference: http://w3schools.com/googleAPI/default.asp
         if($lat && $lng) {                
                 $out .= '<br><img src="img/google_maps_logo.png" width="200" alt="Google Maps"><br>
                         <script>
@@ -125,8 +124,7 @@ class Eventdetailview {
             $out .= "<br>$flickrembed";
         }
         
-        $out .= "</div>
-               </div><br>";
+        $out .= "</div></div></div><br>";
         
         return $out;
     }

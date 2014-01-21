@@ -51,19 +51,17 @@ class Newevent extends Page {
         $flickrtag = $_POST["flickrtag"];
         $flickrembed = $_POST["flickrembed"];
         
+        $neweventview = new Neweventview;
+        
         if($tag <= 0 || $tag > 31 || $jahr < date("Y") || $jahr > 2099) {
-            $neweventview = new Neweventview;
             $o = $neweventview->error(3) . $neweventview->getEventForm();
         } elseif($stunden < 0 || $stunden > 23 || $minuten < 0 || $minuten > 59) {
-            $neweventview = new Neweventview;
             $o = $neweventview->error(4) . $neweventview->getEventForm();
         } elseif(!$eventname || !$eventort || !$eventdatum) {
-            var_dump($eventname, $eventort, $eventdatum);
-            $neweventview = new Neweventview;
             $o = $neweventview->error(1) . $neweventview->getEventForm();
         } else {
             $data = array("name" => $eventname, "ort" => $eventort, "datum" => $eventdatum, 
-                "veranstalter" => $veranstalter, "addinfos" => $addinfos, "tweetembed" => $tweetembed, "hashtag" => $hashtag, "lat" => $lat,
+                "veranstalter" => $veranstalter, "addinfos" => $addinfos, "hashtag" => $hashtag, "lat" => $lat,
                 "lng" => $lng, "flickrtag" => $flickrtag, "flickrembed" => $flickrembed);
             $id = insert($data, "event");
             if($id) {

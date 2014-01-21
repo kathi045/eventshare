@@ -21,7 +21,6 @@ class Editeventview {
         $eventdatum = date("d.m.Y, H:i", $event[0]['datum']);
         $veranstalter = $event[0]["veranstalter"];
         $addinfos = $event[0]["addinfos"];
-        $tweetembed = $event[0]["tweetembed"];
         $hashtag = $event[0]["hashtag"];
         $lat = $event[0]["lat"];
         $lng = $event[0]["lng"];
@@ -96,6 +95,9 @@ class Editeventview {
             
             
           </form>
+          
+          <br><br>
+          <a href="?url=delete&id=' . $id . '" style="text-decoration: underline; color: red; font-family: Helvetica, sans-serif; font-size: 10pt;">Event l&ouml;schen</a>
         ';
     }
     

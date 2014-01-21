@@ -78,14 +78,14 @@ class Editevent extends Page {
              * Beim alten Event "show" auf 0 setzen
              */
             $data = array("name" => $eventname, "ort" => $eventort, "datum" => $eventdatum, 
-                "veranstalter" => $veranstalter, "addinfos" => $addinfos, "tweetembed" => $tweetembed, "hashtag" => $hashtag, "lat" => $lat,
+                "veranstalter" => $veranstalter, "addinfos" => $addinfos, "hashtag" => $hashtag, "lat" => $lat,
                 "lng" => $lng, "flickrtag" => $flickrtag, "flickrembed" => $flickrembed);
             $id = insert($data, "event");
             if($id) {
                 /*
                  * neue und alte event-IDs in den Changelog einspeichern
                  */
-                $changelog_data = array("id_alt" => $id_alt, "id_neu" => $id);
+                $changelog_data = array("id_alt" => $id_alt, "id_neu" => $id, "datum" => time());
                 $ch_id = insert($changelog_data, "changelog");
                 /*
                  * $id: ID des neuen, veraenderten Events

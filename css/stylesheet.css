@@ -57,11 +57,11 @@ textarea {
 #main {
     margin: 0 auto;
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     padding: 40px 20px 40px 24px;
     max-width: 900px;
     background-color: white;
-    min-height: 500px;
+    min-height: 600px;
     box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
     border-radius: 15px;
 }
@@ -177,9 +177,9 @@ input {
 .event_rechts {
     width: 35%;
     position: absolute;
-    bottom: 0;
+    top: 0;
     right: 0;
-    margin-bottom: 10px;
+    margin-top: 30px;
 }
 
 .event_rechts a {

@@ -28,7 +28,6 @@
                 <div id="headbarbuttons">
                     <div>
                         <a class="button" href="?url=newevent">Neues Event</a>
-                        <a class="button" href="?url=changelog">Changelog lesen</a>
                     </div>
                 </div>
                 <div id="logo">
@@ -49,8 +48,8 @@
                             <li><a>August 2013</a></li>
                             <li><a>Juli 2013</a></li>
                         </ul>
-                        <li><a>Noch ein Link</a></li>
-                        <li><a>Noch etwas</a></li>
+                        <li><a href="?url=impressum">Impressum</a></li>
+                        <li><a href="?url=changelog">Changelog</a></li>
                     </ul>
                 </div>
                 <div id="content">

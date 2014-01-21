@@ -13,10 +13,6 @@ class Homeview {
         $veranstalter = $event[0]["veranstalter"];
         
         $out = "<div class='event'>
-                  <div class='event_rechts'>
-                        <a class='button' href='?url=editevent&id=".$id."'><img class='editicon_mini' src='img/edit.png'>Event bearbeiten</a>
-                  </div>
-                  <div class='event_links'>
                     <div class='eventtitle'><a href=\"?url=eventdetail/index&id=$id\">$eventname</a></div>
                     <div class='eventcontent'>
                         <h2>Ort</h2>
@@ -29,7 +25,7 @@ class Homeview {
                         $veranstalter";
         }
         
-        $out .= "</div></div></div><br>";
+        $out .= "</div></div><br>";
         
         return $out;
     }
