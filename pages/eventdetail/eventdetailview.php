@@ -17,6 +17,7 @@ class Eventdetailview {
         $hashtag = $event[0]["hashtag"];
         $lat = $event[0]["lat"];
         $lng = $event[0]["lng"];
+        $adresse = $event[0]["adresse"];
         $flickrtag = $event[0]["flickrtag"];
         $flickrembed = $event[0]["flickrembed"];
         
@@ -97,7 +98,26 @@ class Eventdetailview {
                         '
                         ;
         }
-        
+        if($adresse) {                
+                $out .= '<br><img src="img/google_maps_logo.png" width="200" alt="Google Maps"><br>
+                        <script>
+                        function initialize() {
+                            geocoder.geocode({address:' . $adresse . '}, function(results, status) {
+                                if (status == google.maps.GeocoderStatus.OK) {
+                                    map.setCenter(results[0].geometry.location);
+                                    var marker = new google.maps.Marker({
+                                        map: map,
+                                        position: results[0].geometry.location
+                                    });
+                                } else {
+                                    alert("Geocode was not successful for the following reason: " + status);
+                                }
+                            }
+                        }
+                        google.maps.event.addDomListener(window, "load", initialize);
+                        </script>
+                        '
+        }
         //flickr photo tag  // API reference: http://www.flickr.com/services/api/
         if($flickrtag) {
              

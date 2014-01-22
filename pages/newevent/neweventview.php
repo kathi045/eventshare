@@ -63,7 +63,10 @@ class Neweventview {
             <input type="text" name="lng" value="' . $_POST["lng"] . '">
             <br><br><br>
             
-
+            <h2>Oder einfach die Adresse eingeben:</h2>
+            <input type="text" name="adresse" value="' . $_POST["adresse"] . '">
+            <br><br><br>
+            
             <h2>Mit welchem Tag werden deine Eventfotos auf Flickr geteilt?</h2>
             Flickr-Tag: <input type="text" name="flickrtag" maxlength="20" value="' . $_POST["flickrtag"] . '">
 
