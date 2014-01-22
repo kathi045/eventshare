@@ -15,8 +15,8 @@ class Eventdetailview {
         $veranstalter = $event[0]["veranstalter"];
         $addinfos = $event[0]["addinfos"];
         $hashtag = $event[0]["hashtag"];
-        $lat = $event[0]["lat"];
-        $lng = $event[0]["lng"];
+        //$lat = $event[0]["lat"];
+        //$lng = $event[0]["lng"];
         $adresse = $event[0]["adresse"];
         $flickrtag = $event[0]["flickrtag"];
         $flickrembed = $event[0]["flickrembed"];
@@ -72,6 +72,7 @@ class Eventdetailview {
             }
         }
         
+        /*
         // Google Maps x and y coords --- reference: http://w3schools.com/googleAPI/default.asp
         if($lat && $lng) {                
                 $out .= '<br><img src="img/google_maps_logo.png" width="200" alt="Google Maps"><br>
@@ -98,27 +99,51 @@ class Eventdetailview {
                         '
                         ;
         }
-        if($adresse) {                
-                $out .= '<br><img src="img/google_maps_logo.png" width="200" alt="Google Maps"><br>
-                        <script>
-                        function initialize() {
-                            geocoder.geocode({address:' . $adresse . '}, function(results, status) {
-                                if (status == google.maps.GeocoderStatus.OK) {
-                                    map.setCenter(results[0].geometry.location);
-                                    var marker = new google.maps.Marker({
-                                        map: map,
-                                        position: results[0].geometry.location
-                                    });
-                                } else {
-                                    alert("Geocode was not successful for the following reason: " + status);
-                                }
-                            }
+         * 
+         */           
+        /*
+         *  Google Maps Geocoder: https://developers.google.com/maps/documentation/javascript/examples/geocoding-simple?csw=1
+         * 
+         *  Wandelt die Adresse des Event-Orts gleich in die Koordinaten um
+         *  und erstellt dann eine Google Map mit dem Ort als Marker
+         */
+        $out .= '<br><img src="img/google_maps_logo.png" width="200" alt="Google Maps"><br>
+                <script>
+                var geocoder;
+                var map;
+                function initialize() {
+                  geocoder = new google.maps.Geocoder();
+                  var latlng = new google.maps.LatLng(-34.397, 150.644);
+                  var mapOptions = {
+                    zoom: 13,
+                    center: latlng
+                  }
+                  map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+                  codeAddress();
+                }
+
+                function codeAddress() {
+                    var address = "' . $eventort . '";
+                    geocoder.geocode( { "address": address}, function(results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                          map.setCenter(results[0].geometry.location);
+                          var marker = new google.maps.Marker({
+                              map: map,
+                              position: results[0].geometry.location
+                          });
+                        } else {
+                          alert("Geocode was not successful for the following reason: " + status);
                         }
-                        google.maps.event.addDomListener(window, "load", initialize);
-                        </script>
-                        '
-        }
-        //flickr photo tag  // API reference: http://www.flickr.com/services/api/
+                  });
+                }
+                google.maps.event.addDomListener(window, "load", initialize);
+                </script>
+                <div id="map-canvas"></div>
+                ';
+        
+        /*
+         * flickr photo tag  // API reference: http://www.flickr.com/services/api/
+         */
         if($flickrtag) {
              
             $out .= "Flickr-Photos mit Tag $flickrtag:<br>";

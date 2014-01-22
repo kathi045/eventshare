@@ -72,22 +72,22 @@ class HTML {
         return '<div class="clear"></div>';
     }
     
-//    function menu($arr, $id = "", $class = "")
-//    {
-//        aasort($arr, 'priority');
-//        $o = '<ul id="' . $id . '" class="' . $class . '">';
-//        foreach ($arr as $key => $val)
-//        {
-//            if ($val['active'])
-//                $c = 'active';
-//            else
-//                $c = '';
-//
-//            $o.= '<li class="menu_item" page="'.strtolower($key).'" id="page_' . strtolower($key) . '"><a href="' . DS . strtolower($key) . '" class="' . $c . ' '.$val['class'].'">' . $val['text'] . '</a></li>';
-//        }
-//        $o.= '</ul>';
-//        return $o;
-//    }
+    function menu($arr, $id = "", $class = "")
+    {
+        aasort($arr, 'priority');
+        $o = '<ul id="' . $id . '" class="' . $class . '">';
+        foreach ($arr as $key => $val)
+        {
+            if ($val['active'])
+                $c = 'active';
+            else
+                $c = '';
+
+            $o.= '<li class="menu_item" page="'.strtolower($key).'" id="page_' . strtolower($key) . '"><a href="' . DS . strtolower($key) . '" class="' . $c . ' '.$val['class'].'">' . $val['text'] . '</a></li>';
+        }
+        $o.= '</ul>';
+        return $o;
+    }
     
     function strong($text,$id = "", $class = "")
     {

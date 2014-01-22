@@ -3,7 +3,7 @@
 class Neweventview {
     
     function getEventForm() {
-        return '
+        $o = '
           <img class="neweventicon" src="img/plus.png" alt="edit image"><h1>Neues Event erstellen</h1>
           <form class="neweventform" action="?url=newevent/pr" method="post">
           
@@ -46,11 +46,14 @@ class Neweventview {
             <p style="font-size: 12px;">Felder mit * m&uuml;ssen ausgef&uuml;llt werden.</p>
             <br>
 
-            <h2>Mit welchem Hashtag wird auf Twitter über dein Event geredet?</h2>
+            <h2>Mit welchem Hashtag wird auf Twitter über Dein Event geredet?</h2>
             Hashtag: #<input type="text" name="hashtag" maxlength="20" value="' . $_POST["hashtag"] . '">
 
-            <br><br><br>
-            
+            <br><br><br>';
+        
+        /*
+         *  braucht man nicht -> Markierung in der Map ist automatisch der Event-Ort
+         * 
             <h2>Willst du den Ort in einer Google Map anzeigen lassen?</h2>
             <p>
               Dazu musst du im Google Maps auf den jeweiligen Ort rechtsklicken, dann "Was ist hier?" ausw&auml;hlen und die Koordinaten, die oben im Suchfeld erscheinen, hier eingeben.
@@ -65,14 +68,16 @@ class Neweventview {
             
             <h2>Oder einfach die Adresse eingeben:</h2>
             <input type="text" name="adresse" value="' . $_POST["adresse"] . '">
-            <br><br><br>
-            
-            <h2>Mit welchem Tag werden deine Eventfotos auf Flickr geteilt?</h2>
+            <br><br><br>  
+         *
+         */
+        
+        $o .= '<h2>Mit welchem Tag werden Deine Eventfotos auf Flickr geteilt?</h2>
             Flickr-Tag: <input type="text" name="flickrtag" maxlength="20" value="' . $_POST["flickrtag"] . '">
 
             <br><br><br>
 
-            <h2>Oder vielleicht ein Foto von Flickr hinzuf&uuml;gen?</h2>
+            <h2>Oder willst Du vielleicht ein Foto von Flickr hinzuf&uuml;gen?</h2>
             <p>
               Daf&uuml;r auf das Symbol mit dem Pfeil klicken und den HTML-Code im Textfeld unten einf&uuml;gen.
               <img src="img/flickr_embed.jpg" width="550"><br>
@@ -88,6 +93,7 @@ class Neweventview {
             
           </form>
         ';
+        return $o;
     }
     
     function error($par) {

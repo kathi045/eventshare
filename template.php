@@ -19,7 +19,10 @@
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/stylesheet.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <!--
         <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDyHhVHte59a5sA5_SBRfI3vvE_crUR12A&sensor=false"></script>
+        -->
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
         <?php echo $js; ?>
     </head>
     <body>
@@ -39,14 +42,9 @@
             <div id="page">
                 <div id="sidemenu">
                     <ul>
-                        <li><a>Archiv</a></li>
+                        <li><a href="?url=home">Archiv</a></li>
                         <ul>
-                            <li><a>Dezember 2013</a></li>
-                            <li><a>November 2013</a></li>
-                            <li><a>Oktober 2013</a></li>
-                            <li><a>September 2013</a></li>
-                            <li><a>August 2013</a></li>
-                            <li><a>Juli 2013</a></li>
+                            <?php include "menu.php"; menu(); ?>
                         </ul>
                         <li><a href="?url=impressum">Impressum</a></li>
                         <li><a href="?url=changelog">Changelog</a></li>
