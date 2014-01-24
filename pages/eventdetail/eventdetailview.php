@@ -62,7 +62,7 @@ class Eventdetailview {
    
             $out .= "<h2>Facebook Event:</h2>";
  
-            $fb_link = "https://www.facebook.com/events" . $fb_event_id . "/";            
+            $fb_link = "https://www.facebook.com/events/" . $fb_event_id . "/";            
             $fb_name = $facebook->api("/" . $fb_event_id . "?fields=name");
             $fb_name = $fb_name['name'];
             
