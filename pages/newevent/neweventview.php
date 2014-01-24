@@ -46,6 +46,9 @@ class Neweventview {
             <p style="font-size: 12px;">Felder mit * m&uuml;ssen ausgef&uuml;llt werden.</p>
             <br>
 
+            <h2>Hast Du auf Facebook ein dazugeh&ouml;riges Event erstellt?</h2>
+            Event-URL: <input type="text" name="fb_event_url" maxlength="100" value="' . $_POST["fb_event_url"] . '">
+
             <h2>Mit welchem Hashtag wird auf Twitter über Dein Event geredet?</h2>
             Hashtag: #<input type="text" name="hashtag" maxlength="20" value="' . $_POST["hashtag"] . '">
 

@@ -44,6 +44,7 @@ class Newevent extends Page {
         $eventdatum = strtotime("$tag-$monat-$jahr $stunden:$minuten");
         $veranstalter = $_POST["veranstalter"];
         $addinfos = $_POST["addinfos"];
+        $fb_event_url = $_POST["fb_event_url"];
         $hashtag = $_POST["hashtag"];
         $tweetembed = $_POST["tweetembed"];
         //$lat = $_POST["lat"];
@@ -51,6 +52,15 @@ class Newevent extends Page {
         $adresse = $_POST["adresse"];
         $flickrtag = $_POST["flickrtag"];
         $flickrembed = $_POST["flickrembed"];
+        
+        
+        //fb_event_url ind fb_event_id umwandeln
+        $lastIndex = strrpos($fb_event_url, "/");
+        $startIndex = strpos($fb_event_url, "events/") + 7;
+        $length = $lastIndex - $startIndex;
+        $fb_event_id = substr($fb_event_url, $startIndex, $length);
+    
+        
         
         $neweventview = new Neweventview;
         
@@ -62,7 +72,7 @@ class Newevent extends Page {
             $o = $neweventview->error(1) . $neweventview->getEventForm();
         } else {
             $data = array("name" => $eventname, "ort" => $eventort, "datum" => $eventdatum, 
-                "veranstalter" => $veranstalter, "addinfos" => $addinfos, "hashtag" => $hashtag, "adresse" => $adresse, "flickrtag" => $flickrtag, "flickrembed" => $flickrembed);
+                "veranstalter" => $veranstalter, "addinfos" => $addinfos, "fb_event_id" => $fb_event_id, "hashtag" => $hashtag, "adresse" => $adresse, "flickrtag" => $flickrtag, "flickrembed" => $flickrembed);
             $id = insert($data, "event");
             if($id) {
                 $o = "<h3>Event erfolgreich angelegt!</h3><br>";

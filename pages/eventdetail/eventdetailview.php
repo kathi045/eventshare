@@ -1,6 +1,7 @@
 <?php 
 
 include "classes/twitteroauth.php";
+include "classes/facebook.php";
 
 class Eventdetailview {
 
@@ -14,6 +15,7 @@ class Eventdetailview {
         $eventdatum = date("d.m.Y, H:i", $event[0]['datum']);
         $veranstalter = $event[0]["veranstalter"];
         $addinfos = $event[0]["addinfos"];
+        $fb_event_id = $event[0]["fb_event_id"];
         $hashtag = $event[0]["hashtag"];
         //$lat = $event[0]["lat"];
         //$lng = $event[0]["lng"];
@@ -41,6 +43,61 @@ class Eventdetailview {
         if($addinfos) {
             $out .= "<h2>Zus&auml;tzliche Infos</h2>" . nl2br($addinfos) . "<br><br>";   // nl2b: new line to break (Zeilenumbrueche)
         }
+        
+        
+        //Facebook Event
+        if ($fb_event_id) {
+            
+            $app_id = "557224121020260";
+            $app_secret = "f76394118a2abebaf00e19ce3215bc0a";
+            
+            $fb_config = array(
+                'appId' => $app_id,
+                'secret' => $app_secret,
+                'fileUpload' => false, // optional
+                'allowSignedRequest' => false, // optional, but should be set to false for non-canvas apps
+            );
+          
+            $facebook = new Facebook($fb_config);
+   
+            $out .= "<h2>Facebook Event:</h2>";
+ 
+            $fb_link = "https://www.facebook.com/events" . $fb_event_id . "/";            
+            $fb_name = $facebook->api("/" . $fb_event_id . "?fields=name");
+            $fb_name = $fb_name['name'];
+            
+            $out .= '<strong><a href="' . $fb_link . '">' . $fb_name . "</a></strong><br><br>";
+            
+            $attending = $facebook->api("/" . $fb_event_id . "/attending");
+            $attending = $attending['data'];
+            
+            $out .= count($attending) . " G&auml;ste haben zugesagt!<br><br>";
+            
+            foreach ($attending as $attendee) {
+                $out .= '<a href="https://www.facebook.com/' . $attendee['id'] . '">' . $attendee['name'] . "</a><br>";
+            }
+            
+            $out .= "<br><br>Neueste Kommentare:<br><br>";
+            
+            $feed = $facebook->api("/" . $fb_event_id . "/feed");
+            $feed = $feed['data'];
+            
+            foreach ($feed as $post) {
+                if ($post['type'] == "status") {
+                    $out .= '<a href="https://www.facebook.com/' . $post['from']['id'] . '">' . $post['from']['name'] . "</a><br>";
+                    $out .= $post['message'] . "<br><br>";
+                }
+                if ($post['story']) {
+                    $out .= '<a href="https://www.facebook.com/' . $post['from']['id'] . '">' . $post['from']['name'] . "</a><br>";                   
+                    $out .= $post['story'] . "<br>";
+                    if ($post['type'] == "photo") {
+                        $out .= '<img src="' . $post['picture'] . '" alt="Facebook Photo"><br>';
+                    }
+                    $out .= "<br>";
+                }
+            }           
+        }
+        
         
         //Twitter Hashtag --- reference: https://dev.twitter.com/docs/api/1.1/get/search/tweets, tutorial: http://www.youtube.com/watch?v=iPnGB7a7dO0
         if($hashtag) {
