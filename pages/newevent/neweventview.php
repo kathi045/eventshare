@@ -47,7 +47,7 @@ class Neweventview {
             <br>
 
             <h2>Hast Du auf Facebook ein dazugeh&ouml;riges Event erstellt?</h2>
-            Event-URL: <input type="text" name="fb_event_url" maxlength="100" value="' . $_POST["fb_event_url"] . '">
+            Event-URL: <input type="text" name="fb_event_url" maxlength="100" size="70" value="' . $_POST["fb_event_url"] . '">
 
             <h2>Mit welchem Hashtag wird auf Twitter über Dein Event geredet?</h2>
             Hashtag: #<input type="text" name="hashtag" maxlength="20" value="' . $_POST["hashtag"] . '">
@@ -75,10 +75,13 @@ class Neweventview {
          *
          */
         
-        $o .= '<h2>Mit welchem Tag werden Deine Eventfotos auf Flickr geteilt?</h2>
-            Flickr-Tag: <input type="text" name="flickrtag" maxlength="20" value="' . $_POST["flickrtag"] . '">
-
-            <br><br><br>
+        $o .= '<h2>Mit welchem Tag werden Deine Eventfotos auf Flickr markiert?</h2>
+            Flickr-Tag: <input type="text" name="flickrtag" maxlength="20" value="' . $_POST["flickrtag"] . '">';
+        
+        /*
+         * Flickr embed, abgelöst von Flickr-Tag
+         * 
+        $o .='<br><br><br>
 
             <h2>Oder willst Du vielleicht ein Foto von Flickr hinzuf&uuml;gen?</h2>
             <p>
@@ -95,7 +98,8 @@ class Neweventview {
             
             
           </form>
-        ';
+        ';*/
+        
         return $o;
     }
     

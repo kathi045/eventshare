@@ -249,17 +249,15 @@ class Eventdetailview {
             
             $flickrkey = "27d0025e89ef414fcc5671a3dcad6ed6";
             
-            $flickrurl = "http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" . $flickrkey . "&tags=" . $flickrtag . "&per_page=5&format=rest";        
+            $flickrurl = "http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" . $flickrkey . "&tags=" . $flickrtag . "&per_page=5&format=php_serial";        
             $photolist = file_get_contents($flickrurl);
-        
-            print_r($flickrurl);    //TEST: URL PASST
-            print_r($photolist);    //TEST: WIRD NICHT AUSGEGEBEN!!!
-            
-            foreach ($photolist->rsp->photos->photo as $photo) {
-                    $flickrurl = "http://farm" . $photo[farm] . ".staticflickr.com" . $photo[server] . "/" . $photo[id] . "_" . $photo[secret] . "_q.jpg";  // q am Ende steht für die Größe. Liste der Größenangaben: http://www.flickr.com/services/api/misc.urls.html
-                    $out .= '<div><img border="0" alt="'. $photo[title] . '" src="
-                        ' . $flickrurl . '" /><br /><p>' . $photo[title] . '</p></div>';
+            $photolist = unserialize($photolist);
+       
+            foreach($photolist['photos']['photo'] as $photo) { 
+                $out .= '<div><img src="' . 'http://farm' . $photo["farm"] . '.static.flickr.com/' . $photo["server"] . '/' . $photo["id"] . '_' . $photo["secret"] . '.jpg">';
+                $out .= '<br>' . $photo[title] . '</div><br><br>';
             }
+            
             $out .= '<br><a href="#flickr">Nach oben.</a>';
             $out .= "</div>";   //Ende des Flickr Wrappers
         }
