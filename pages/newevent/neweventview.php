@@ -54,51 +54,8 @@ class Neweventview {
 
             <br><br><br>';
         
-        /*
-         *  braucht man nicht -> Markierung in der Map ist automatisch der Event-Ort
-         * 
-            <h2>Willst du den Ort in einer Google Map anzeigen lassen?</h2>
-            <p>
-              Dazu musst du im Google Maps auf den jeweiligen Ort rechtsklicken, dann "Was ist hier?" ausw&auml;hlen und die Koordinaten, die oben im Suchfeld erscheinen, hier eingeben.
-              <img src="img/googlemaps_wasisthier.png" width="400"><br>
-            </p>
-            
-            <p><strong>Erste Zahl:</strong> (z.B. 48.211941)</p>
-            <input type="text" name="lat" value="' . $_POST["lat"] . '"><br>
-            <p><strong>Zweite Zahl:</strong> (z.B. 16.376848)</p>
-            <input type="text" name="lng" value="' . $_POST["lng"] . '">
-            <br><br><br>
-            
-            <h2>Oder einfach die Adresse eingeben:</h2>
-            <input type="text" name="adresse" value="' . $_POST["adresse"] . '">
-            <br><br><br>  
-         *
-         */
-        
         $o .= '<h2>Mit welchem Tag werden Deine Eventfotos auf Flickr markiert?</h2>
             Flickr-Tag: <input type="text" name="flickrtag" maxlength="20" value="' . $_POST["flickrtag"] . '">';
-        
-        /*
-         * Flickr embed, abgelöst von Flickr-Tag
-         * 
-        $o .='<br><br><br>
-
-            <h2>Oder willst Du vielleicht ein Foto von Flickr hinzuf&uuml;gen?</h2>
-            <p>
-              Daf&uuml;r auf das Symbol mit dem Pfeil klicken und den HTML-Code im Textfeld unten einf&uuml;gen.
-              <img src="img/flickr_embed.jpg" width="550"><br>
-            </p>
-
-            <textarea rows="5" cols="70" name="flickrembed" value="' . $_POST["flickrembed"] . '"></textarea>
-            
-            <br>
-            <br>
-            <br>
-            <input class="button" type="submit" value="Eintragen"><br><br>
-            
-            
-          </form>
-        ';*/
         
         return $o;
     }

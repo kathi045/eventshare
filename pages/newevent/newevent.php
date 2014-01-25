@@ -47,11 +47,8 @@ class Newevent extends Page {
         $fb_event_url = $_POST["fb_event_url"];
         $hashtag = $_POST["hashtag"];
         $tweetembed = $_POST["tweetembed"];
-        //$lat = $_POST["lat"];
-        //$lng = $_POST["lng"];
         $adresse = $_POST["adresse"];
         $flickrtag = $_POST["flickrtag"];
-        $flickrembed = $_POST["flickrembed"];
         
         
         //fb_event_url ind fb_event_id umwandeln
@@ -71,8 +68,11 @@ class Newevent extends Page {
         } elseif(!$eventname || !$eventort || !$eventdatum) {
             $o = $neweventview->error(1) . $neweventview->getEventForm();
         } else {
-            $data = array("name" => $eventname, "ort" => $eventort, "datum" => $eventdatum, 
-                "veranstalter" => $veranstalter, "addinfos" => $addinfos, "fb_event_id" => $fb_event_id, "hashtag" => $hashtag, "adresse" => $adresse, "flickrtag" => $flickrtag, "flickrembed" => $flickrembed);
+            $data = array("name" => $eventname, "ort" => $eventort, 
+                "datum" => $eventdatum, "veranstalter" => $veranstalter, 
+                "addinfos" => $addinfos, "fb_event_id" => $fb_event_id, 
+                "hashtag" => $hashtag, "adresse" => $adresse, 
+                "flickrtag" => $flickrtag, "flickrembed" => $flickrembed);
             $id = insert($data, "event");
             if($id) {
                 $o = "<h3>Event erfolgreich angelegt!</h3><br>";

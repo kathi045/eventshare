@@ -17,11 +17,8 @@ class Eventdetailview {
         $addinfos = $event[0]["addinfos"];
         $fb_event_id = $event[0]["fb_event_id"];
         $hashtag = $event[0]["hashtag"];
-        //$lat = $event[0]["lat"];
-        //$lng = $event[0]["lng"];
         $adresse = $event[0]["adresse"];
         $flickrtag = $event[0]["flickrtag"];
-        $flickrembed = $event[0]["flickrembed"];
         
         //JavaScript Funktion zum Toggeln der Visibility
         $out = '<script type="text/javascript">
@@ -54,43 +51,6 @@ class Eventdetailview {
         if($addinfos) {
             $out .= "<h2>Zus&auml;tzliche Infos</h2>" . nl2br($addinfos) . "<br><br>";   // nl2b: new line to break (Zeilenumbrueche)
         }
-        
-
-        /*
-        // Google Maps x and y coords --- reference: http://w3schools.com/googleAPI/default.asp
-        if($lat && $lng) {                
-                $out .= '<br><img src="img/google_maps_logo.png" width="200" alt="Google Maps"><br>
-                        <script>
-                            function initialize() {
-                                var myCenter = new google.maps.LatLng(' . $lat . ',' . $lng . ');
-                                var mapProp = {
-                                    center:myCenter,
-                                    zoom:13,
-                                    mapTypeId:google.maps.MapTypeId.ROADMAP
-                                };
-                                var map=new google.maps.Map(document.getElementById("googleMap' . $id . '"),mapProp);
-                                
-                                var marker=new google.maps.Marker({
-                                    position:myCenter,
-                                    });
-
-                                marker.setMap(map);
-                            }
-
-                            google.maps.event.addDomListener(window, "load", initialize);
-                        </script>
-                        <div id="googleMap' . $id . '" style="width:500px; height:380px;"></div>
-                        '
-                        ;
-        }
-         * 
-         */           
-        /*
-         *  Google Maps Geocoder: https://developers.google.com/maps/documentation/javascript/examples/geocoding-simple?csw=1
-         * 
-         *  Wandelt die Adresse des Event-Orts gleich in die Koordinaten um
-         *  und erstellt dann eine Google Map mit dem Ort als Marker
-         */
         
         $out .= '<br><br><img src="img/google_maps_logo.png" width="200" alt="Google Maps"><br>
                 <script>
