@@ -190,6 +190,16 @@ input {
     width: 60%;
 }
 
+.event_social {
+    width: 480px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 100px;
+    padding-bottom: 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+}
+
 .neweventform {
     margin-top: 30px;
 }
@@ -219,7 +229,7 @@ input {
 }
 
 .tweets {
-    width: 500px;
+    width: 450px;
     border: 1px solid #d2d2d2;
     border-radius: 4px;
     padding: 10px 20px 20px 20px;
