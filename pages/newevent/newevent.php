@@ -46,7 +46,7 @@ class Newevent extends Page {
         $addinfos = $_POST["addinfos"];
         $fb_event_url = $_POST["fb_event_url"];
         $hashtag = $_POST["hashtag"];
-        $tweetembed = $_POST["tweetembed"];
+        //$tweetembed = $_POST["tweetembed"];
         $adresse = $_POST["adresse"];
         $flickrtag = $_POST["flickrtag"];
         
@@ -72,7 +72,7 @@ class Newevent extends Page {
                 "datum" => $eventdatum, "veranstalter" => $veranstalter, 
                 "addinfos" => $addinfos, "fb_event_id" => $fb_event_id, 
                 "hashtag" => $hashtag, "adresse" => $adresse, 
-                "flickrtag" => $flickrtag, "flickrembed" => $flickrembed);
+                "flickrtag" => $flickrtag);
             $id = insert($data, "event");
             if($id) {
                 $o = "<h3>Event erfolgreich angelegt!</h3><br>";

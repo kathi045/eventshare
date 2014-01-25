@@ -57,6 +57,10 @@ class Neweventview {
         $o .= '<h2>Mit welchem Tag werden Deine Eventfotos auf Flickr markiert?</h2>
             Flickr-Tag: <input type="text" name="flickrtag" maxlength="20" value="' . $_POST["flickrtag"] . '">';
         
+        $o .= '<br><br><br>
+            <input class="button" type="submit" value="Eintragen"><br><br>
+            </form>';
+        
         return $o;
     }
     

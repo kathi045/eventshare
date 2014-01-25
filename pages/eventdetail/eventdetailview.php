@@ -106,7 +106,7 @@ class Eventdetailview {
           
             $facebook = new Facebook($fb_config);
             
-            $out .= '<br><br><div><a name="facebook" href="#facebook" onclick="toggle_visibility(' . "'facebook'" . ');">Facebook</a></div><br>';
+            $out .= '<br><br><div><a name="facebook" href="#facebook" onclick="toggle_visibility(' . "'facebook'" . ');">> Facebook anzeigen</a></div><br>';
             $out .= '<div id="facebook" class="event_social" style="display:none">';
             
             $out .= "<h2>Facebook Event:</h2>";
@@ -169,7 +169,7 @@ class Eventdetailview {
             $accesstoken = "2279704992-8Mf75D8VWn8VlRIc3oZbMnlyvR4c045Sl22r3am";
             $accesstokensecret = "olZqD6MOdr86yv0qE56J5Q15QEQyB1mwnhX2cXtS8qzaZ";
 
-            $out .= '<br><br><div><a name="twitter" href="#twitter" onclick="toggle_visibility(' . "'twitter'" . ');">Twitter</a></div><br>';
+            $out .= '<br><br><div><a name="twitter" href="#twitter" onclick="toggle_visibility(' . "'twitter'" . ');">> Twitter anzeigen</a></div><br>';
             $out .= '<div id="twitter" class="event_social" style="display:none">';
             
             $out .= '<nr><img src="img/twitter_logo.png" alt="Twitter Bird" height="30px"><span class="hashtag">#' . $hashtag . '</span><br>';
@@ -184,9 +184,11 @@ class Eventdetailview {
                     if($count == 10) {
                         break;
                     }
-                    $out .= '<div class="tweets"><img src="'.$t->user->profile_image_url.'" />';
-                    $out .= '<span class="twittername">    ' . $t->user->name . '</span><br>';
-                    $out .= '<div class="twittertext">' . $t->text.'</div></div><br>';                                        //text gibt den Tweet aus
+                    if (strlen($t->text) > 0) {
+                        $out .= '<div class="tweets"><img src="'.$t->user->profile_image_url.'" />';
+                        $out .= '<span class="twittername">    ' . $t->user->name . '</span><br>';
+                        $out .= '<div class="twittertext">' . $t->text.'</div></div><br>';  //text gibt den Tweet aus
+                    }
                 }
                 if($count == 10) {
                     break;
@@ -202,10 +204,10 @@ class Eventdetailview {
          */
         if($flickrtag) {
             
-            $out .= '<br><br><div><a name="flickr" href="#flickr" onclick="toggle_visibility(' . "'flickr'" . ');">Flickr</a></div><br>';
+            $out .= '<br><br><div><a name="flickr" href="#flickr" onclick="toggle_visibility(' . "'flickr'" . ');">> Flickr anzeigen</a></div><br>';
             $out .= '<div id="flickr" class="event_social" style="display:none">';
                          
-            $out .= "Flickr-Photos mit Tag $flickrtag:<br>";
+            $out .= "Flickr-Fotos mit Tag <strong>$flickrtag</strong>:<br>";
             
             $flickrkey = "27d0025e89ef414fcc5671a3dcad6ed6";
             
