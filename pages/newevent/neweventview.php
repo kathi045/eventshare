@@ -48,7 +48,7 @@ class Neweventview {
 
             <img src="img/facebook_logo.jpg" height="50" alt="Facebook Logo">
             <h2>Hast Du auf Facebook ein dazugeh&ouml;riges Event erstellt?</h2>
-            Event-URL: <br><input type="text" name="fb_event_url" maxlength="100" size="70" value="' . $_POST["fb_event_url"] . '">
+            Event-URL: <br><br><input type="text" name="fb_event_url" maxlength="100" size="70" value="' . $_POST["fb_event_url"] . '"><br><br><br>
 
             <img src="img/twitter.png" height="35" alt="Twitter Logo">
             <h2>Mit welchem Hashtag wird auf Twitter über Dein Event geredet?</h2>

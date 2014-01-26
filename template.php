@@ -35,7 +35,7 @@
                 </div>
                 <div id="logo">
                     <a href="?url=home">
-                        <img src="img/logo_1.png">
+                        <img src="img/logo_2.png" width="570" alt="eventshare Logo">
                     </a>
                 </div>
             </div>
