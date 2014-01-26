@@ -52,7 +52,9 @@ class Eventdetailview {
             $out .= "<h2>Zus&auml;tzliche Infos</h2>" . nl2br($addinfos) . "<br><br>";   // nl2b: new line to break (Zeilenumbrueche)
         }
         
-        $out .= '<br><br><img src="img/google_maps_logo.png" width="200" alt="Google Maps"><br>
+        // Google Maps API
+        
+        $out .= '<div id="googlemaps" class="event_social_title"><img src="img/google_maps_logo.png" width="200" alt="Google Maps"><br>
                 <script>
                 var geocoder;
                 var map;
@@ -83,12 +85,8 @@ class Eventdetailview {
                 }
                 google.maps.event.addDomListener(window, "load", initialize);
                 </script>
-                <div id="map-canvas"></div>
+                <div id="map-canvas"></div></div><div class="clear"></div>
                 ';
-        
-                
-        
-        
         
         //Facebook Event
         //API Event Documentation:  https://developers.facebook.com/docs/graph-api/reference/event/
@@ -106,7 +104,7 @@ class Eventdetailview {
           
             $facebook = new Facebook($fb_config);
             
-            $out .= '<br><br><div><a name="facebook" href="#facebook" onclick="toggle_visibility(' . "'facebook'" . ');">> Facebook anzeigen</a></div><br>';
+            $out .= '<div class="event_social_title"><a name="facebook" href="#facebook" onclick="toggle_visibility(' . "'facebook'" . ');"> <img src="img/facebook_logo.jpg" height="50" alt="Facebook Logo"> <u>anzeigen</u></a></div><br>';
             $out .= '<div id="facebook" class="event_social" style="display:none">';
             
             $out .= "<h2>Facebook Event:</h2>";
@@ -119,7 +117,7 @@ class Eventdetailview {
             $fb_name = $facebook->api("/" . $fb_event_id . "?fields=name");
             $fb_name = $fb_name['name'];
             
-            $out .= '<strong><a href="' . $fb_link . '">' . $fb_name . "</a></strong><br><br>";
+            $out .= '<strong><a style="font-size: 17px;" href="' . $fb_link . '">' . $fb_name . "</a></strong><br><br>";
             
             $attending = $facebook->api("/" . $fb_event_id . "/attending");
             $attending = $attending['data'];
@@ -156,7 +154,7 @@ class Eventdetailview {
                     $out .= "<br>";
                 }
             }       
-            $out .= '<br><a href="#facebook">Nach oben.</a>';
+            $out .= '<br><a href="#facebook">Nach oben</a>';
             $out .= "</div>";   //Ende des Facebook Wrappers
         }
         
@@ -169,10 +167,7 @@ class Eventdetailview {
             $accesstoken = "2279704992-8Mf75D8VWn8VlRIc3oZbMnlyvR4c045Sl22r3am";
             $accesstokensecret = "olZqD6MOdr86yv0qE56J5Q15QEQyB1mwnhX2cXtS8qzaZ";
 
-            $out .= '<br><br><div><a name="twitter" href="#twitter" onclick="toggle_visibility(' . "'twitter'" . ');">> Twitter anzeigen</a></div><br>';
-            $out .= '<div id="twitter" class="event_social" style="display:none">';
             
-            $out .= '<nr><img src="img/twitter_logo.png" alt="Twitter Bird" height="30px"><span class="hashtag">#' . $hashtag . '</span><br>';
             
             $twitter = new TwitterOAuth($consumer, $consumersecret, $accesstoken, $accesstokensecret);
             $tweets = $twitter->get('https://api.twitter.com/1.1/search/tweets.json?q=%23'.$hashtag.'&result_type=mixed');    //%23 wird als # aufgelöst (Hashtag)    //weitere Parameter: https://dev.twitter.com/docs/api/1.1/get/search/tweets
@@ -180,22 +175,30 @@ class Eventdetailview {
             $count = 0;
             foreach($tweets as $tweet) {
                 foreach($tweet as $t) {
-                    $count++;
-                    if($count == 10) {
+                    if($count >= 9) {
                         break;
                     }
                     if (strlen($t->text) > 0) {
+                        $count++;
+                        if($count == 1) {
+                            $out .= '<div class="event_social_title"><a name="twitter" href="#twitter" onclick="toggle_visibility(' . "'twitter'" . ');"> <img src="img/twitter.png" height="35" alt="Twitter Logo"> <u>anzeigen</u></a></div><br>';
+                            $out .= '<div id="twitter" class="event_social" style="display:none">';
+
+                            $out .= '<nr><img src="img/twitter_logo.png" alt="Twitter Bird" height="30px"><span class="hashtag">#' . $hashtag . '</span><br>';
+                        }
                         $out .= '<div class="tweets"><img src="'.$t->user->profile_image_url.'" />';
                         $out .= '<span class="twittername">    ' . $t->user->name . '</span><br>';
                         $out .= '<div class="twittertext">' . $t->text.'</div></div><br>';  //text gibt den Tweet aus
                     }
                 }
-                if($count == 10) {
+                if($count >= 9) {
                     break;
                 }
             }
-            $out .= '<br><a href="#twitter">Nach oben.</a>';
-            $out .= "</div>";   //Ende des Twitter Wrappers            
+            if($count > 0) {
+                $out .= '<br><a href="#twitter">Nach oben.</a>';
+                $out .= "</div>";   //Ende des Twitter Wrappers
+            }
         }
         
 
@@ -204,10 +207,10 @@ class Eventdetailview {
          */
         if($flickrtag) {
             
-            $out .= '<br><br><div><a name="flickr" href="#flickr" onclick="toggle_visibility(' . "'flickr'" . ');">> Flickr anzeigen</a></div><br>';
+            $out .= '<div class="event_social_title"><a name="flickr" href="#flickr" onclick="toggle_visibility(' . "'flickr'" . ');"> <img src="img/flickr_logo.png" height="30" alt="Flickr Logo"> <u>anzeigen</u></a></div><br>';
             $out .= '<div id="flickr" class="event_social" style="display:none">';
                          
-            $out .= "Flickr-Fotos mit Tag <strong>$flickrtag</strong>:<br>";
+            $out .= "<span style='font-size: 17px;'> Flickr-Fotos mit Tag <strong>$flickrtag</strong>:</span><br>";
             
             $flickrkey = "27d0025e89ef414fcc5671a3dcad6ed6";
             
@@ -222,11 +225,6 @@ class Eventdetailview {
             
             $out .= '<br><a href="#flickr">Nach oben.</a>';
             $out .= "</div>";   //Ende des Flickr Wrappers
-        }
-        
-        // flickr photo album
-        if($flickrembed) {
-            $out .= "<br>$flickrembed";
         }
         
         $out .= "</div></div></div><br>";

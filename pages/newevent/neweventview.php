@@ -46,18 +46,21 @@ class Neweventview {
             <p style="font-size: 12px;">Felder mit * m&uuml;ssen ausgef&uuml;llt werden.</p>
             <br>
 
+            <img src="img/facebook_logo.jpg" height="50" alt="Facebook Logo">
             <h2>Hast Du auf Facebook ein dazugeh&ouml;riges Event erstellt?</h2>
-            Event-URL: <input type="text" name="fb_event_url" maxlength="100" size="70" value="' . $_POST["fb_event_url"] . '">
+            Event-URL: <br><input type="text" name="fb_event_url" maxlength="100" size="70" value="' . $_POST["fb_event_url"] . '">
 
+            <img src="img/twitter.png" height="35" alt="Twitter Logo">
             <h2>Mit welchem Hashtag wird auf Twitter über Dein Event geredet?</h2>
             Hashtag: #<input type="text" name="hashtag" maxlength="20" value="' . $_POST["hashtag"] . '">
 
-            <br><br><br>';
+            <br><br><br>
         
-        $o .= '<h2>Mit welchem Tag werden Deine Eventfotos auf Flickr markiert?</h2>
-            Flickr-Tag: <input type="text" name="flickrtag" maxlength="20" value="' . $_POST["flickrtag"] . '">';
+            <img src="img/flickr_logo.png" height="35" alt="Flickr Logo">
+            <h2>Mit welchem Tag werden Deine Eventfotos auf Flickr markiert?</h2>
+            Flickr-Tag: <input type="text" name="flickrtag" maxlength="20" value="' . $_POST["flickrtag"] . '">
         
-        $o .= '<br><br><br>
+            <br><br><br>
             <input class="button" type="submit" value="Eintragen"><br><br>
             </form>';
         

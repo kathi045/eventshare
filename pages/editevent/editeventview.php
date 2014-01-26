@@ -74,19 +74,9 @@ class Editeventview {
             Hashtag: #<input type="text" name="hashtag" maxlength="20" value="' . $hashtag . '">
             <br><br><br>
             
-            <h2>GoogleMaps</h2>
-            <p><strong>Erste Zahl:</strong> (z.B. 48.211941)</p>
-            <input type="text" name="lat" value="' . $lat . '"><br>
-            <p><strong>Zweite Zahl:</strong> (z.B. 16.376848)</p>
-            <input type="text" name="lng" value="' . $lng . '">
-            <br><br><br>
-            
             <h2>Flickr</h2>
  
             Flickr-Tag: <input type="text" name="flickrtag" maxlength="20" value="' . $flickrtag . '">
-
-
-            <textarea rows="5" cols="70" name="flickrembed" value="' . $flickrembed . '"></textarea>
             
             <br>
             <br>

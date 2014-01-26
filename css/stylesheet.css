@@ -30,7 +30,6 @@ p {
 
 img {
     border: none;
-    margin: 20px 0px 20px 0px;
 }
 
 h1 {
@@ -191,11 +190,9 @@ input {
 }
 
 .event_social {
-    width: 480px;
-    padding-top: 10px;
-    padding-left: 20px;
-    padding-right: 100px;
-    padding-bottom: 10px;
+    width: 500px;
+    margin-bottom: 20px;
+    padding: 20px 20px 20px 20px;
     border: 2px solid #ddd;
     border-radius: 4px;
 }
@@ -219,7 +216,7 @@ input {
 .editeventicon {
     float: left;
     width: 25px;
-    margin-right: 10px;
+    margin: 20px 10px 0px 0px;
     padding-top: 2px;
 }
 
@@ -268,13 +265,27 @@ input {
     height: 380px;
     width: 500px;
 }
-  
-#panel {
-    top: 5px;
-    left: 50%;
-    margin-left: -180px;
-    z-index: 5;
-    background-color: #fff;
-    padding: 5px;
-    border: 1px solid #999;
+
+#facebook {
+    font-size: 13px;
+}
+
+#facebook a {
+    color: #3b5998;
+}
+
+#facebook a:hover {
+    text-decoration: underline;
+}
+
+#googlemaps {
+    margin: 20px 0px 40px 0px;
+}
+
+#googlemaps img {
+    margin: 20px 0px;
+}
+
+.event_social_title {
+    margin: 20px 0px;
 }
