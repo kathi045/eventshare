@@ -6,6 +6,21 @@
 
 class Home extends Page {
     
+    /*
+     * in jeder Index-Funktion (der verschiedenen pages) werden der Title des HTML-Heads
+     * festgelegt sowie der Content.
+     * 
+     * showEvents() listet alle aktuellen Events in gekuerzter Fassung auf
+     * 
+     * updatePastEvents() ueberprueft bei jedem Zugriff auf die Startseite,
+     * ob ein Event schon vorbei ist; wenn ja, wird der show-tag in der Datenbank
+     * auf 0 gesetzt und das Event erscheint nicht mehr auf der Webseite.
+     * 
+     * die View-Pages sind fuer den eigentlichen Inhalt (content) verantwortlich, 
+     * der angezeigt werden soll; die jeweiligen 
+     * Controller (Home, Newevent, Eventdetail usw.) verarbeiten ihn.
+     */
+    
     function index() {
         $this->updatePastEvents();
         $o = $this->showEvents();

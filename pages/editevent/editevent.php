@@ -57,15 +57,18 @@ class Editevent extends Page {
         $veranstalter = $_POST["veranstalter"];
         $addinfos = $_POST["addinfos"];
         $hashtag = $_POST["hashtag"];
-        $tweetembed = $_POST["tweetembed"];
-        $lat = $_POST["lat"];
-        $lng = $_POST["lng"];
         $flickrtag = $_POST["flickrtag"];
-        $flickrembed = $_POST["flickrembed"];
+        $fb_event_url = $_POST["fb_event_url"];
+        
+        //fb_event_url in fb_event_id umwandeln
+        $lastIndex = strrpos($fb_event_url, "/");
+        $startIndex = strpos($fb_event_url, "events/") + 7;
+        $length = $lastIndex - $startIndex;
+        $fb_event_id = substr($fb_event_url, $startIndex, $length);
         
         if($tag <= 0 || $tag > 31 || $jahr < date("Y") || $jahr > 2099) {
             $neweventview = new Neweventview;
-            $o = $neweventview->error(3) . $editeventview->getEditEventForm($id);
+            $o = $neweventview->error(3) . $editeventview->getEditEventForm($id_alt);
         } elseif($stunden < 0 || $stunden > 23 || $minuten < 0 || $minuten > 59) {
             $neweventview = new Neweventview;
             $o = $neweventview->error(4) . $editeventview->getEditEventForm($id);
@@ -78,8 +81,7 @@ class Editevent extends Page {
              * Beim alten Event "show" auf 0 setzen
              */
             $data = array("name" => $eventname, "ort" => $eventort, "datum" => $eventdatum, 
-                "veranstalter" => $veranstalter, "addinfos" => $addinfos, "hashtag" => $hashtag, "lat" => $lat,
-                "lng" => $lng, "flickrtag" => $flickrtag, "flickrembed" => $flickrembed);
+                "veranstalter" => $veranstalter, "addinfos" => $addinfos, "fb_event_id" => $fb_event_id, "hashtag" => $hashtag, "flickrtag" => $flickrtag);
             $id = insert($data, "event");
             if($id) {
                 /*

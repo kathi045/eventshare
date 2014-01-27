@@ -2,6 +2,11 @@
 
 class Archivview {
     
+    /*
+     * Monat und Jahr werden aus der URL abgefragt und Events, die in dieser Zeit
+     * stattfinden, angezeigt
+     */
+    
     function showEvents() {
         $homeview = new Homeview;
         $m = $_GET['m'];
@@ -27,6 +32,9 @@ class Archivview {
         // Alle Events aus der Datenbank ausgeben und anzeigen
         $o = "<h1>Archiv: " . $monat . " " . $j . "</h1><br>";
         $ids = simplequery('SELECT `id`,`datum` FROM `event` WHERE `show` = 1 ORDER BY `datum`');
+        if(!$ids) {
+            return;
+        }
         foreach ($ids as $id) {
             $monat = date("m", $id['datum']);
             $jahr = date("Y", $id['datum']);

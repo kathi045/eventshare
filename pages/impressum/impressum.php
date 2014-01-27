@@ -1,5 +1,9 @@
 <?php
 
+/*
+ *  Impressum
+ */
+
 class Impressum extends Page {
 
     function index() {

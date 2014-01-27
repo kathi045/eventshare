@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * Changelog Seite
+ */
+
 class Changelog extends Page {
     
     function index() {

@@ -5,6 +5,11 @@ include "classes/facebook.php";
 
 class Eventdetailview {
 
+    /*
+     * alle Informationen zum Event anzeigen.
+     * aus der Datenbank werden alle Daten ausgelesen
+     */
+    
     function renderEventdetails($id) {
         $event = simplequery("SELECT * FROM `event` WHERE `id` = '$id'");
         if(!$event){
@@ -20,7 +25,7 @@ class Eventdetailview {
         $adresse = $event[0]["adresse"];
         $flickrtag = $event[0]["flickrtag"];
         
-        //JavaScript Funktion zum Toggeln der Visibility
+        //JavaScript Funktion zum Toggeln der Visibility der einzelnen Social Media Verknuepfungen
         $out = '<script type="text/javascript">
             function toggle_visibility(id) {
                 var e = document.getElementById(id);
@@ -31,6 +36,7 @@ class Eventdetailview {
             }
         </script>';
         
+        // Basis-Details 
         $out .= "<div class='event'>
                 <div class='event_rechts'>
                     <a class='button' href='?url=editevent&id=".$id."'><img class='editicon_mini' src='img/edit.png'>Event bearbeiten</a>
@@ -53,43 +59,46 @@ class Eventdetailview {
         }
         
         // Google Maps API
-        
-        $out .= '<div id="googlemaps" class="event_social_title"><img src="img/google_maps_logo.png" width="200" alt="Google Maps"><br>
-                <script>
-                var geocoder;
-                var map;
-                function initialize() {
-                  geocoder = new google.maps.Geocoder();
-                  var latlng = new google.maps.LatLng(-34.397, 150.644);
-                  var mapOptions = {
-                    zoom: 13,
-                    center: latlng
-                  }
-                  map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-                  codeAddress();
-                }
+        // als Ort wird der eingespeicherte Event-Ort genommen und auf der Karte angezeigt
+        if($eventort) {
+            $out .= '<div id="googlemaps" class="event_social_title"><img src="img/google_maps_logo.png" width="200" alt="Google Maps"><br>
+                    <script>
+                    var geocoder;
+                    var map;
+                    function initialize() {
+                      geocoder = new google.maps.Geocoder();
+                      var latlng = new google.maps.LatLng(-34.397, 150.644);
+                      var mapOptions = {
+                        zoom: 13,
+                        center: latlng
+                      }
+                      map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+                      codeAddress();
+                    }
 
-                function codeAddress() {
-                    var address = "' . $eventort . '";
-                    geocoder.geocode( { "address": address}, function(results, status) {
-                        if (status == google.maps.GeocoderStatus.OK) {
-                          map.setCenter(results[0].geometry.location);
-                          var marker = new google.maps.Marker({
-                              map: map,
-                              position: results[0].geometry.location
-                          });
-                        } else {
-                          alert("Geocode was not successful for the following reason: " + status);
-                        }
-                  });
-                }
-                google.maps.event.addDomListener(window, "load", initialize);
-                </script>
-                <div id="map-canvas"></div></div><div class="clear"></div>
-                ';
+                    function codeAddress() {
+                        var address = "' . $eventort . '";
+                        geocoder.geocode( { "address": address}, function(results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
+                              map.setCenter(results[0].geometry.location);
+                              var marker = new google.maps.Marker({
+                                  map: map,
+                                  position: results[0].geometry.location
+                              });
+                            } else {
+                              alert("Geocode was not successful for the following reason: " + status);
+                            }
+                      });
+                    }
+                    google.maps.event.addDomListener(window, "load", initialize);
+                    </script>
+                    <div id="map-canvas"></div></div><div class="clear"></div>
+                    ';
+        }
         
         //Facebook Event
         //API Event Documentation:  https://developers.facebook.com/docs/graph-api/reference/event/
+        // anhand der event-ID werden die Informationen ausgelesen
         if ($fb_event_id) {
             
             $app_id = "557224121020260";
@@ -172,6 +181,9 @@ class Eventdetailview {
             $twitter = new TwitterOAuth($consumer, $consumersecret, $accesstoken, $accesstokensecret);
             $tweets = $twitter->get('https://api.twitter.com/1.1/search/tweets.json?q=%23'.$hashtag.'&result_type=mixed');    //%23 wird als # aufgelöst (Hashtag)    //weitere Parameter: https://dev.twitter.com/docs/api/1.1/get/search/tweets
             
+            // Counter, damit nur maximal 10 Tweets angezeigt werden.
+            // weiters wird sicher gestellt, dass nur twitter-divs erstellt werden,
+            // wenn auch Tweets da sind
             $count = 0;
             foreach($tweets as $tweet) {
                 foreach($tweet as $t) {
@@ -230,12 +242,6 @@ class Eventdetailview {
         $out .= "</div></div></div><br>";
         
         return $out;
-    }
-    
-    function error($par) {
-        switch($par) {
-            case 1: return '<span class="error"does not exist</span>';
-        }
     }
     
 }

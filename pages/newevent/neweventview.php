@@ -2,6 +2,15 @@
 
 class Neweventview {
     
+    /*
+     * Formular fuer ein neues Event erstellen.
+     * Name, Ort, Datum, Uhrzeit sind obligatorische Felder
+     * Veranstalter, additional Info, Twitter Hashtag, Facebook Event, Flickr-tag
+     * koennen ebenso eingefuegt werden.
+     * 
+     * die Post-Variablen werden dann an pr() weitergegeben, wo die Fehlerueberpruefung stattfindet
+     * und in die Datenbank gespeichert wird.
+     */
     function getEventForm() {
         $o = '
           <img class="neweventicon" src="img/plus.png" alt="edit image"><h1>Neues Event erstellen</h1>
@@ -67,12 +76,18 @@ class Neweventview {
         return $o;
     }
     
+    /*
+     * Error Messages, wenn der Benutzer nicht alle obligatorischen Felder
+     * ausgefuellt hat, das Datum nicht korrekt eingegeben hat oder wenn beim Speichern
+     * in die Datenbank etwas schief gegangen ist.
+     */
     function error($par) {
         switch($par) {
             case 1: return '<span class="error">Es m&uuml;ssen alle Felder mit * ausgef&uuml;llt werden!</span>';
             case 2: return '<span class="error">Leider ist etwas schief gelaufen.</span>';
             case 3: return '<span class="error">Bei der Datumeingabe ist etwas schief gegangen.</span>';
             case 4: return '<span class="error">Bei der Uhrzeiteingabe ist etwas schief gegangen.</span>';
+            default: return '<span class="error">Leider ist etwas schief gelaufen.</span>';
         }
     }
     

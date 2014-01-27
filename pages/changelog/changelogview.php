@@ -2,6 +2,13 @@
 
 class Changelogview {
 
+    /*
+     * es werden untereinander jeweils das originale und das geaenderte Event
+     * angezeigt. So kann man gut die Veraenderungen der Benutzer mitverfolgen
+     * und auch faelschlich geaenderte oder geloeschte Events wieder aufs Original
+     * zuruecksetzen
+     */
+    
     function showChangelog() {
         $o = "<h1>Changelog</h1>";
         // ganzen Changelog-table abfragen

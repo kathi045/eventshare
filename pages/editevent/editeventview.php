@@ -22,10 +22,12 @@ class Editeventview {
         $veranstalter = $event[0]["veranstalter"];
         $addinfos = $event[0]["addinfos"];
         $hashtag = $event[0]["hashtag"];
-        $lat = $event[0]["lat"];
-        $lng = $event[0]["lng"];
         $flickrtag = $event[0]["flickrtag"];
-        $flickrembed = $event[0]["flickrembed"];
+        $fb_id = $event[0]["fb_event_id"];
+        $fb_url = "";
+        if($fb_id) {
+            $fb_url = "https://www.facebook.com/events/" . $fb_id;
+        }
         
         return '
           <img class="editeventicon" src="img/edit.png" alt="edit event icon"><h1>Event bearbeiten</h1>
@@ -69,6 +71,10 @@ class Editeventview {
             
             <p style="font-size: 12px;">Felder mit * m&uuml;ssen ausgef&uuml;llt werden.</p>
             <br>
+            
+            <h2>Facebook</h2>
+            Event-URL: <input type="text" name="fb_event_url" maxlength="100" value="' .$fb_url . '">
+            <br><br><br>
 
             <h2>Twitter</h2>
             Hashtag: #<input type="text" name="hashtag" maxlength="20" value="' . $hashtag . '">

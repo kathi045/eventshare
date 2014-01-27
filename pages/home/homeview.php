@@ -2,6 +2,11 @@
 
 class Homeview {
     
+    /*
+     * die Ueberschriften der Events sind Links zu den detaillierteren Events.
+     * Hier werden nur die wichtigsten Informationen wie Name, Ort und Datum angezeigt.
+     */
+    
     function renderEvent($id) {
         $event = simplequery("SELECT * FROM `event` WHERE `id` = '$id'");
         if(!$event){

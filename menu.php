@@ -8,6 +8,11 @@ function menu() {
     
     $events = simplequery("SELECT `datum` FROM `event` WHERE `show` = 1 ORDER BY `datum`");
     foreach ($events as $e) {
+        /*
+         * von jedem Event wird der Monat und das Jahr gespeichert
+         * aber nur jeweils einmal, damit nicht ein Menupunkt oefter als einmal
+         * aufscheint. -> $rem => remember
+         */
         $jahr = date("Y", $e['datum']);
         $monat = date("m", $e['datum']);
         if($rem[$jahr.$monat] == 1) {

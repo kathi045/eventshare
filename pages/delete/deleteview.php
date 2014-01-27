@@ -1,7 +1,9 @@
 <?php
 
 class Deleteview {
-    
+    /*
+     * error message, falls beim Loeschen etwas schief laeuft
+     */
     function error($par) {
         
         switch($par) {

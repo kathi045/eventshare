@@ -1,7 +1,8 @@
 <?php
 
 /*
- *  New event site
+ *  New event site: hier werden neue Events erstellt und in die Datenbank
+ * gespeichert.
  */
 
 class Newevent extends Page {
@@ -15,7 +16,10 @@ class Newevent extends Page {
     
     /**
      * process new event request
-     * Neues Event in die Datenbank einspeichern oder Fehlermeldung
+     * Neues Event in die Datenbank einspeichern oder Fehlermeldung ausgeben.
+     * 
+     * die Post-Variablen werden ueberprueft und entweder eingespeichert oder
+     * es wird eine Fehlermeldung angezeigt und das Formular erscheint erneut 
      */
     function pr() {
         $this->set('title', "eventshare | Neues Event");
@@ -46,12 +50,10 @@ class Newevent extends Page {
         $addinfos = $_POST["addinfos"];
         $fb_event_url = $_POST["fb_event_url"];
         $hashtag = $_POST["hashtag"];
-        //$tweetembed = $_POST["tweetembed"];
-        $adresse = $_POST["adresse"];
         $flickrtag = $_POST["flickrtag"];
         
         
-        //fb_event_url ind fb_event_id umwandeln
+        //fb_event_url in fb_event_id umwandeln
         $lastIndex = strrpos($fb_event_url, "/");
         $startIndex = strpos($fb_event_url, "events/") + 7;
         $length = $lastIndex - $startIndex;
@@ -61,25 +63,35 @@ class Newevent extends Page {
         
         $neweventview = new Neweventview;
         
+        /*
+         * wenn nicht alle obligaten Felder ausgefuellt sind, wird der Benutzer
+         * auf das Formular zurueckverwiesen und er muss die entsprechenden Felder
+         * ausfuellen.
+         */
         if($tag <= 0 || $tag > 31 || $jahr < date("Y") || $jahr > 2099) {
             $o = $neweventview->error(3) . $neweventview->getEventForm();
         } elseif($stunden < 0 || $stunden > 23 || $minuten < 0 || $minuten > 59) {
             $o = $neweventview->error(4) . $neweventview->getEventForm();
         } elseif(!$eventname || !$eventort || !$eventdatum) {
             $o = $neweventview->error(1) . $neweventview->getEventForm();
-        } else {
+        } else { // alle wichtigen Felder sind ausgefuellt
             $data = array("name" => $eventname, "ort" => $eventort, 
                 "datum" => $eventdatum, "veranstalter" => $veranstalter, 
                 "addinfos" => $addinfos, "fb_event_id" => $fb_event_id, 
-                "hashtag" => $hashtag, "adresse" => $adresse, 
-                "flickrtag" => $flickrtag);
+                "hashtag" => $hashtag, "flickrtag" => $flickrtag);
             $id = insert($data, "event");
             if($id) {
                 $o = "<h3>Event erfolgreich angelegt!</h3><br>";
                 
+                // nach dem erfolgreichen Einspeichern wird das erstellte
+                // Event gleich angezeigt
                 $eventdetailview = new Eventdetailview();
                 $o .= $eventdetailview->renderEventdetails($id);
             } else {
+                /*
+                 * die Datenbank hat keine id zurückgegeben, daher muss wo
+                 * ein Fehler passiert sein. Aktion wird abgebrochen
+                 */
                 $o = $neweventview->error(2);
             }
         }
