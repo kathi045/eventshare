@@ -14,14 +14,17 @@ a {
 
 a:hover {
     color: #6DA67A;
+    text-decoration: none;
 }
 
 a:visited {
     color: #4A4857;
+    text-decoration: none;
 }
 
 a:visited:hover {
     color: #6DA67A;
+    text-decoration: none;
 }
 
 p {
@@ -103,20 +106,55 @@ textarea {
 
 .button:hover {
     color: #5e5e5e;
-    background-color: #ebebeb;
+    background-color: #C1C1C1;
     background-repeat: repeat-x;
-    background-image: -webkit-linear-gradient(bottom, #f9f9f9, #ebebeb);
-    background-image: -o-linear-gradient(bottom, #f9f9f9, #ebebeb);
-    background-image: linear-gradient(bottom, #f9f9f9, #ebebeb);
+    background-image: -webkit-linear-gradient(bottom, #f9f9f9, #C1C1C1);
+    background-image: -o-linear-gradient(bottom, #f9f9f9, #C1C1C1);
+    background-image: linear-gradient(bottom, #f9f9f9, #C1C1C1);
 }
 
 .deletebutton {
-    background-color: #FF4848;
     padding: 6px 10px;
-    color: white;
+    color: #ebebeb;
+    background-color: #FF0000;
+    background-repeat: repeat-x;
+    background-image: -webkit-linear-gradient(top, #FF0000, #ebebeb);
+    background-image: -o-linear-gradient(top, #FF0000, #ebebeb);
+    background-image: linear-gradient(top, #FF0000, #ebebeb);
     border: 1px solid #d2d2d2;
     border-radius: 3px;
     box-shadow: 0 1px 2px rgba(64, 64, 64, 0.1);
+}
+
+.deletebutton:hover {
+    color: #ebebeb;
+    background-color: #BA0000;
+    background-repeat: repeat-x;
+    background-image: -webkit-linear-gradient(bottom, #BA0000, #ebebeb);
+    background-image: -o-linear-gradient(bottom, #BA0000, #ebebeb);
+    background-image: linear-gradient(bottom, #BA0000, #ebebeb);
+}
+
+.submitbutton {
+    padding: 6px 10px;
+    color: #ebebeb;
+    background-color: #00C617;
+    background-repeat: repeat-x;
+    background-image: -webkit-linear-gradient(top, #00C617, #ebebeb);
+    background-image: -o-linear-gradient(top, #00C617, #ebebeb);
+    background-image: linear-gradient(top, #00C617, #ebebeb);
+    border: 1px solid #d2d2d2;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(64, 64, 64, 0.1);
+}
+
+.submitbutton:hover {
+    color: #ebebeb;
+    background-color: #009B17;
+    background-repeat: repeat-x;
+    background-image: -webkit-linear-gradient(bottom, #009B17, #ebebeb);
+    background-image: -o-linear-gradient(bottom, #009B17, #ebebeb);
+    background-image: linear-gradient(bottom, #009B17, #ebebeb);
 }
 
 .button:visited:hover {
@@ -159,7 +197,7 @@ input {
 .eventtitle {
     font-size: 20pt;
     font-weight: bold;
-    text-decoration: underline;
+    text-decoration: none;
     margin-bottom: 25px;
 }
 

@@ -55,7 +55,7 @@ class Eventdetailview {
         }
         
         if($addinfos) {
-            $out .= "<h2>Zus&auml;tzliche Infos</h2>" . nl2br($addinfos) . "<br><br>";   // nl2b: new line to break (Zeilenumbrueche)
+            $out .= '<div style="width: 500px"><h2>Zus&auml;tzliche Infos</h2>' . nl2br($addinfos) . "</div><br><br>";   // nl2b: new line to break (Zeilenumbrueche)
         }
         
         // Google Maps API

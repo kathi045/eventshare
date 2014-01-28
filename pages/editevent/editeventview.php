@@ -26,7 +26,7 @@ class Editeventview {
         $fb_id = $event[0]["fb_event_id"];
         $fb_url = "";
         if($fb_id) {
-            $fb_url = "https://www.facebook.com/events/" . $fb_id;
+            $fb_url = "https://www.facebook.com/events/" . $fb_id . "/";
         }
         
         return '
@@ -73,7 +73,7 @@ class Editeventview {
             <br>
             
             <h2>Facebook</h2>
-            Event-URL: <input type="text" name="fb_event_url" maxlength="100" value="' .$fb_url . '">
+            Event-URL: <input type="text" name="fb_event_url" maxlength="100" size="70" value="' .$fb_url . '">
             <br><br><br>
 
             <h2>Twitter</h2>
@@ -87,12 +87,11 @@ class Editeventview {
             <br>
             <br>
             <br>
-            <input class="button" type="submit" value="&Auml;ndern"><br><br>
+            <input class="submitbutton" type="submit" value="&Auml;nderungen speichern">
             
             
           </form>
           
-          <br><br>
           <button class="deletebutton" onclick="checkDelete()">Event l&ouml;schen</button>
           <script>
             function checkDelete() {
