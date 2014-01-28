@@ -110,7 +110,17 @@ textarea {
     background-image: linear-gradient(bottom, #f9f9f9, #ebebeb);
 }
 
+.deletebutton {
+    background-color: #FF4848;
+    padding: 6px 10px;
+    color: white;
+    border: 1px solid #d2d2d2;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(64, 64, 64, 0.1);
+}
+
 .button:visited:hover {
+    padding: 6px 10px;
     color: #5e5e5e;
 }
 

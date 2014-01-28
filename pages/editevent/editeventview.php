@@ -87,13 +87,20 @@ class Editeventview {
             <br>
             <br>
             <br>
-            <input class="button" type="submit" value="Eintragen"><br><br>
+            <input class="button" type="submit" value="&Auml;ndern"><br><br>
             
             
           </form>
           
           <br><br>
-          <a href="?url=delete&id=' . $id . '" style="text-decoration: underline; color: red; font-family: Helvetica, sans-serif; font-size: 10pt;">Event l&ouml;schen</a>
+          <button class="deletebutton" onclick="checkDelete()">Event l&ouml;schen</button>
+          <script>
+            function checkDelete() {
+                var r = confirm("Bist du dir sicher, dass du das Event löschen willst?");
+                if(r == true)
+                    this.document.location = "?url=delete&id=' . $id . '";
+            }
+          </script>
         ';
     }
     
